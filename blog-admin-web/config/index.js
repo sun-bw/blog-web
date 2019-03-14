@@ -16,7 +16,7 @@ module.exports = {
         target:'https://baike.baidu.com',//目标url地址,
         changeOrigin:true,//是否可以跨域
         pathRewrite:{
-          '^/api':'/api'  //可以用list，等价于api.xxxxxx.com/list
+          '^/api':'/api'  //如果后面的api不加，就要在接口多加一个api才可访问出去
         }
       }
     },

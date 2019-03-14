@@ -21,13 +21,13 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="js" value="376" />
+          <entry key="js" value="412" />
           <entry key="vue" value="203" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JavaScript" value="376" />
+          <entry key="JavaScript" value="412" />
           <entry key="Vue.js" value="203" />
         </counts>
       </usages-collector>
@@ -142,8 +142,8 @@
         <option value="$PROJECT_DIR$/blog-admin-web/config/prod.env.js" />
         <option value="$PROJECT_DIR$/blog-admin-web/src/main.js" />
         <option value="$PROJECT_DIR$/blog-admin-web/src/api/api.js" />
-        <option value="$PROJECT_DIR$/blog-admin-web/config/index.js" />
         <option value="$PROJECT_DIR$/blog-admin-web/src/components/HelloWorld.vue" />
+        <option value="$PROJECT_DIR$/blog-admin-web/config/index.js" />
       </list>
     </option>
   </component>
@@ -256,12 +256,12 @@
       <updated>1552402610984</updated>
       <workItem from="1552402616598" duration="189000" />
       <workItem from="1552484453302" duration="2487000" />
-      <workItem from="1552533851784" duration="7351000" />
+      <workItem from="1552533851784" duration="7444000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10027000" />
+    <option name="totallyTimeSpent" value="10120000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
