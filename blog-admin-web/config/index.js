@@ -12,10 +12,12 @@ module.exports = {
     assetsPublicPath: '/',
     //代理表，作用是来，建一个虚拟api服务器代理本机请求，只能用于开发模式。
     proxyTable: {
-      target:'http://api.douban.com/v2',//目标url地址,
-      changeOrigin:true,//是否可以跨域
-      pathRewrite:{
-        '^/api':'/api'  //可以用list，等价于api.xxxxxx.com/list
+      '/api':{
+        target:'https://baike.baidu.com',//目标url地址,
+        changeOrigin:true,//是否可以跨域
+        pathRewrite:{
+          '^/api':'/api'  //可以用list，等价于api.xxxxxx.com/list
+        }
       }
     },
 

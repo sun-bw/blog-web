@@ -84,12 +84,21 @@
 </template>
 
 <script>
+  import axios from '../api/api'
 export default {
   name: 'HelloWorld',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
     }
+  },
+  mounted(){
+    axios.get('/api/wikisecond/lemmasecond?lemmaId=270208',{
+
+    }).then(res => {
+      console.log(111)
+      console.log(res)
+    })
   }
 }
 </script>
