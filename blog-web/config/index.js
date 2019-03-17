@@ -10,7 +10,21 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      '/api':{
+        target:'https://baike.baidu.com',//目标url地址,
+        changeOrigin:true,//是否可以跨域
+        pathRewrite:{
+          //测试
+          '^/api':'/api'
+          //如果后面的api不加，就要在接口多加一个api才可访问出去.可以看成localhost：8080/api
+          //应该是必填api
+          //https://baike.baidu.com/discussion/api/getdiscussioncount?lemmaId=270208
+          //这个接口写api访问不到，要访问就要把api换成discussion
+          //  这个https://baike.baidu.com/api/wikisecond/lemmasecond?lemmaId=270208 随便写都可以访问到
+        }
+      }
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
