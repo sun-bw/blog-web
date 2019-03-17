@@ -39,9 +39,8 @@
 <style scoped>
 .content-center{
   width: 100%;
-  margin-top: 10vh;
+  margin-top: 5vh;
   background: blue;
   height: 100vh;
-  top: 10vh;
 }
 </style>
