@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="header"></div>
+    123123
   </div>
 </template>
 <script>
