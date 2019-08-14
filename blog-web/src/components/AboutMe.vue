@@ -1,5 +1,5 @@
 <template>
   <div>
-    当前a页面呀
+    关于我呀
   </div>
 </template>

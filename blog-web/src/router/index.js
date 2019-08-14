@@ -9,14 +9,14 @@ const Home = (resolve => {
   })
 })
 
-const a = (resolve => {
-  import('@/components/a').then(module => {
+const TimeLine = (resolve => {
+  import('@/components/TimeLine').then(module => {
     resolve(module)
   })
 })
 
-const b = (resolve => {
-  import('@/components/b').then(module => {
+const AboutMe = (resolve => {
+  import('@/components/AboutMe').then(module => {
     resolve(module)
   })
 })
@@ -29,14 +29,14 @@ export default new Router({
       component: Home,
     },
     {
-      path:'/a',
-      name:'a',
-      component:a,
+      path:'/TimeLine',
+      name:'TimeLine',
+      component:TimeLine,
     },
     {
-      path:'/b',
-      name:'b',
-      component:b,
+      path:'/AboutMe',
+      name:'AboutMe',
+      component:AboutMe,
     }
   ]
 })
