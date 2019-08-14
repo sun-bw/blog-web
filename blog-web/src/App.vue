@@ -1,23 +1,42 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+  <div>
+    <el-container>
+      <el-header>
+        <el-menu :router="true" :default-active="activeIndex" mode="horizontal" class="el-menu-demo">
+          <el-menu-item index="/">
+            <span slot="title">首页</span>
+          </el-menu-item>
+          <el-menu-item index="/a">
+            <span slot="title">aaaaaa</span>
+          </el-menu-item>
+          <el-menu-item index="/b">
+            <span slot="title">bbbbbb</span>
+          </el-menu-item>
+        </el-menu>
+      </el-header>
+      <el-main>
+        <keep-alive>
+          <router-view/>
+        </keep-alive>
+      </el-main>
+      <el-footer>
+        123123
+      </el-footer>
+    </el-container>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  data(){
+    return{
+      activeIndex:''
+    }
+  }
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
