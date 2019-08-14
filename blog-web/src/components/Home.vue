@@ -1,7 +1,6 @@
 <template>
   <div>
-    <el-button type="primary">111111</el-button>
-    <button>333333</button>
+    这是首页呀
   </div>
 </template>
 <script>
