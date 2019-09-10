@@ -13,10 +13,13 @@
       }
     },
     mounted(){
-      axios.get('/api/wikisecond/lemmasecond?lemmaId=270208',{})
-        .then(res => {
-          console.log(res)
-        })
+      // axios.get('/api/wikisecond/lemmasecond?lemmaId=270208',{})
+      //   .then(res => {
+      //     console.log(res)
+      //   })
+      axios.get('/api/cs',{}).then(res => {
+        console.log(res)
+      })
     },
     methods:{
 

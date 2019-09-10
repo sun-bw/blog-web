@@ -13,7 +13,8 @@ module.exports = {
     //代理表，作用是来，建一个虚拟api服务器代理本机请求，只能用于开发模式。
     proxyTable: {
       '/api':{
-        target:'https://baike.baidu.com',//目标url地址,
+        // target:'https://baike.baidu.com',//目标url地址,
+        target:'http://localhost:8090',//目标url地址,
         changeOrigin:true,//是否可以跨域
         pathRewrite:{
           //测试

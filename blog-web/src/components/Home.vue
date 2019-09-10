@@ -1,8 +1,6 @@
 <template>
-  <div style="padding: 0 20%">
-    这是首页呀
-    <div>1231</div>
-    <el-button @click="haha">haha</el-button>
+  <div class="home">
+    <div class="content">1231</div>
   </div>
 </template>
 <script>
@@ -23,5 +21,18 @@
   }
 </script>
 <style scoped>
-
+  .home{
+    background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../../static/img/homeImg.jpg);
+    height: 937px;
+    background-size: 100% 100%;
+    background-attachment:fixed;
+  }
+  .home .content{
+    color: #FFFFFF;
+    width: 140px;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    margin-left: -70px;
+  }
 </style>

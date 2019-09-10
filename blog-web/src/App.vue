@@ -3,7 +3,8 @@
     <el-container>
       <!--页面头部-->
       <el-header id="header-content">
-        <el-menu :router="true" :default-active="activeIndex" mode="horizontal" background-color="#1c2327"
+        <div class="blog-name">墨染</div>
+        <el-menu :router="true" :default-active="activeIndex" mode="horizontal" background-color="transparent"
                  text-color="#fff" active-text-color="#ffd04b" id="menu-content">
           <el-menu-item index="/">
             <span slot="title">首页</span>
@@ -24,7 +25,7 @@
       </el-main>
       <!--页面尾部-->
       <el-footer>
-        123123
+        页面尾部
       </el-footer>
     </el-container>
   </div>
@@ -47,10 +48,29 @@ export default {
 <style>
   #header-content{
     padding: 0px!important;
+    position: fixed;
+    /*固定定位*/
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
   }
   /*去掉body的magin*/
   body{
     margin: 0px;
+  }
+  .el-main{
+    padding: 0px;
+  }
+  /*名字样式*/
+  .blog-name{
+    color: #FFFFFF;
+    width: 140px;
+    position: absolute;
+    top: 40%;
+    left: 20%;
   }
   /*导航栏样式*/
   #menu-content{
@@ -58,4 +78,8 @@ export default {
     justify-content: flex-end;
     padding: 0 20%;
   }
+  .el-menu.el-menu--horizontal{
+    border-bottom:0px
+  }
+
 </style>
