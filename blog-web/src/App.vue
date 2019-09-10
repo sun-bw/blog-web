@@ -2,12 +2,15 @@
   <div>
     <el-container>
       <!--页面头部-->
-      <el-header id="header-content">
+      <el-header class="header-content">
         <div class="blog-name">墨染</div>
         <el-menu :router="true" :default-active="activeIndex" mode="horizontal" background-color="transparent"
                  text-color="#fff" active-text-color="#ffd04b" id="menu-content">
           <el-menu-item index="/">
             <span slot="title">首页</span>
+          </el-menu-item>
+          <el-menu-item index="/TimeLine">
+            <span slot="title">个人笔记</span>
           </el-menu-item>
           <el-menu-item index="/TimeLine">
             <span slot="title">时间轴</span>
@@ -43,10 +46,7 @@ export default {
 </script>
 
 <style scoped>
-
-</style>
-<style>
-  #header-content{
+  .header-content{
     padding: 0px!important;
     position: fixed;
     /*固定定位*/
@@ -56,13 +56,7 @@ export default {
     left: 0;
     width: 100%;
     height: 60px;
-  }
-  /*去掉body的magin*/
-  body{
-    margin: 0px;
-  }
-  .el-main{
-    padding: 0px;
+    z-index: 999;
   }
   /*名字样式*/
   .blog-name{
@@ -71,6 +65,15 @@ export default {
     position: absolute;
     top: 40%;
     left: 20%;
+  }
+</style>
+<style>
+  /*去掉body的magin*/
+  body{
+    margin: 0px;
+  }
+  .el-main{
+    padding: 0px;
   }
   /*导航栏样式*/
   #menu-content{

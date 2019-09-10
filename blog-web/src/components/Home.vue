@@ -1,6 +1,9 @@
 <template>
   <div class="home">
-    <div class="content">1231</div>
+    <div class="content">
+      <p>一个初入江湖</p>
+      <p>伪文艺程序员</p>
+    </div>
   </div>
 </template>
 <script>
@@ -29,10 +32,11 @@
   }
   .home .content{
     color: #FFFFFF;
-    width: 140px;
+    width: 150px;
     position: absolute;
     top: 40%;
     left: 50%;
     margin-left: -70px;
+    font-size: 20px;
   }
 </style>
