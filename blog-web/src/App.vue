@@ -41,30 +41,9 @@ export default {
   name: 'App',
   data(){
     return{
-      activeIndex:'/',
+      activeIndex:'',
       menuBackgroundColor:'#000000',//菜单栏背景色
       routerName:'',//监听滚动条是，参数。用于判断当前位置是不是首页
-    }
-  },
-  mounted(){
-    //监听滚动条
-    window.addEventListener('scroll',this.handleScroll,true)
-  },
-  methods:{
-    //滚动条方法
-    handleScroll(){
-      //判断当前位置是不是首页
-      if(this.routerName === 'Home'){
-        //当滚动条距离上面高度大于100时
-        if(document.documentElement.scrollTop > 100){
-          //更改导航栏颜色为黑色
-          this.menuBackgroundColor = '#000000'
-        }
-        if(document.documentElement.scrollTop < 100){
-          //
-          this.menuBackgroundColor = 'transparent'
-        }
-      }
     }
   },
   watch:{
@@ -82,8 +61,46 @@ export default {
         this.routerName = 'else';
         this.menuBackgroundColor = '#000000'
       }
+
+      let path = to.path;
+      this.setActiveIndex(path);
     }
-  }
+  },
+  mounted(){
+    //监听滚动条
+    window.addEventListener('scroll',this.handleScroll,true)
+    //当刷新重新加载页面时，路由为
+    if(window.location.pathname){
+      this.setActiveIndex(window.location.pathname)
+    }
+  },
+  methods:{
+    //用于解决当前路由位置问题，刷新页面路由重置问题
+    setActiveIndex(path){
+      //截取路由上的/
+      let pathArr = path.split('/');
+      if(pathArr.length > 3){
+        this.activeIndex = `/${pathArr[1]}/${pathArr[2]}`;
+      }else {
+        this.activeIndex = path;
+      }
+    },
+    //滚动条方法
+    handleScroll(){
+      //判断当前位置是不是首页
+      if(this.routerName === 'Home'){
+        //当滚动条距离上面高度大于100时
+        if(document.documentElement.scrollTop > 100){
+          //更改导航栏颜色为黑色
+          this.menuBackgroundColor = '#000000'
+        }
+        if(document.documentElement.scrollTop < 100){
+          this.menuBackgroundColor = 'transparent'
+        }
+      }
+    },
+  },
+
 }
 </script>
 
