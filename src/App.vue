@@ -10,7 +10,7 @@
           <el-menu-item index="/">
             <span slot="title">首页</span>
           </el-menu-item>
-          <el-menu-item index="/TimeLine">
+          <el-menu-item index="/PersonalNotes">
             <span slot="title">个人笔记</span>
           </el-menu-item>
           <el-menu-item index="/TimeLine">

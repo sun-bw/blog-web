@@ -21,12 +21,23 @@ const AboutMe = (resolve => {
   })
 })
 
+const PersonalNotes = (resolve => {
+  import('@/components/persionalNotes/PersonalNotes').then(module => {
+    resolve(module)
+  })
+})
+
 export default new Router({
   routes: [
     {
       path: '/',
       name: 'Home',
       component: Home,
+    },
+    {
+      path:'/PersonalNotes',
+      name:'PersonalNotes',
+      component:PersonalNotes,
     },
     {
       path:'/TimeLine',
