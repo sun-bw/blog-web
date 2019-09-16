@@ -4,7 +4,8 @@
       <!--页面头部-->
       <el-header class="header-content">
         <div class="blog-name">墨染</div>
-        <el-menu :router="true" :default-active="activeIndex" mode="horizontal" background-color="transparent"
+        <!--transparent-->
+        <el-menu :router="true" :default-active="activeIndex" mode="horizontal" :background-color="menuBackgroundColor"
                  text-color="#fff" active-text-color="#ffd04b" id="menu-content">
           <el-menu-item index="/">
             <span slot="title">首页</span>
@@ -28,6 +29,7 @@
       </el-main>
       <!--页面尾部-->
       <el-footer>
+        <div style="height: 1000px"></div>
         页面尾部
       </el-footer>
     </el-container>
@@ -39,7 +41,47 @@ export default {
   name: 'App',
   data(){
     return{
-      activeIndex:'/'
+      activeIndex:'/',
+      menuBackgroundColor:'#000000',//菜单栏背景色
+      routerName:'',//监听滚动条是，参数。用于判断当前位置是不是首页
+    }
+  },
+  mounted(){
+    //监听滚动条
+    window.addEventListener('scroll',this.handleScroll,true)
+  },
+  methods:{
+    //滚动条方法
+    handleScroll(){
+      //判断当前位置是不是首页
+      if(this.routerName === 'Home'){
+        //当滚动条距离上面高度大于100时
+        if(document.documentElement.scrollTop > 100){
+          //更改导航栏颜色为黑色
+          this.menuBackgroundColor = '#000000'
+        }
+        if(document.documentElement.scrollTop < 100){
+          //
+          this.menuBackgroundColor = 'transparent'
+        }
+      }
+    }
+  },
+  watch:{
+    //监听路由
+    //当路由为home时，菜单栏更改颜色为transparent
+    //当为其他路由时，菜单栏为000000黑色
+    $route(to,form){
+      if(to.name === 'Home'){
+        this.routerName = 'Home';
+        this.menuBackgroundColor = 'transparent';
+        if(document.documentElement.scrollTop > 100){
+          this.menuBackgroundColor = '#000000'
+        }
+      }else {
+        this.routerName = 'else';
+        this.menuBackgroundColor = '#000000'
+      }
     }
   }
 }
@@ -65,6 +107,7 @@ export default {
     position: absolute;
     top: 40%;
     left: 20%;
+    z-index: 999;
   }
 </style>
 <style>

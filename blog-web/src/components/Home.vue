@@ -1,8 +1,8 @@
 <template>
   <div class="home">
     <div class="content">
-      <p>一个初入江湖</p>
-      <p>伪文艺程序员</p>
+      <!--<p>一个初入江湖</p>-->
+      <!--<p>伪文艺程序员</p>-->
     </div>
   </div>
 </template>
@@ -13,6 +13,9 @@
       return{
 
       }
+    },
+    mounted(){
+
     },
     methods:{
       haha(){
@@ -38,5 +41,10 @@
     left: 50%;
     margin-left: -70px;
     font-size: 20px;
+  }
+</style>
+<style>
+  #menu-content{
+    background-color: azure;
   }
 </style>
