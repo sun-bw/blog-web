@@ -22,15 +22,14 @@
         </el-menu>
       </el-header>
       <!--页面内容，配置路由-->
-      <el-main>
+      <el-main style="background: #f0f0f0">
         <keep-alive>
           <router-view/>
         </keep-alive>
       </el-main>
       <!--页面尾部-->
       <el-footer>
-        <div style="height: 1000px"></div>
-        页面尾部
+        <div> 页面尾部</div>
       </el-footer>
     </el-container>
   </div>
