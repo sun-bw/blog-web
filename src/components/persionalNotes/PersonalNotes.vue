@@ -139,6 +139,7 @@
   .classification .title-content{
     height: 40px;
     line-height: 40px;
+    cursor: pointer;
   }
   .classification .title-content:hover{
     border-right: 6px solid #484947;
