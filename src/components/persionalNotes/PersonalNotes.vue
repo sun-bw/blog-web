@@ -18,8 +18,11 @@
           </div>
         </div>
         <!--分类-->
-        <div>
-          <span>分类</span>
+        <div class="classification">
+          <!--内容-->
+          <div v-for="item in data1" :key="item.id" class="title-content">
+            <div class="name">{{item.name}}</div>
+          </div>
         </div>
       </div>
   </div>
@@ -48,6 +51,19 @@
             lei:'java',
           }
         ],
+        data1:[{
+          id:1,
+          name:'全部'
+        },{
+          id:2,
+          name:'CSS'
+        },{
+          id:3,
+          name:'HTML'
+        },{
+          id:4,
+          name:'JavaScript'
+        }]
       }
     },
     methods:{
@@ -108,7 +124,26 @@
     position: relative
   }
   .search .content{
-   padding: 20px;
+    padding: 20px;
     background: grey
+  }
+  .classification{
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+  .classification .name{
+    margin: 0 30px;
+    padding: 0 20px;
+    color: #787977;
+  }
+  .classification .title-content{
+    height: 40px;
+    line-height: 40px;
+  }
+  .classification .title-content:hover{
+    border-right: 6px solid #484947;
+    height: 40px;
+    background-color: #f8f9f7;
+    z-index: 0;
   }
 </style>
