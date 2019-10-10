@@ -28,6 +28,7 @@
   </div>
 </template>
 <script>
+  import axios from '../../api/api'
   export default{
     data(){
       return{
@@ -66,8 +67,15 @@
         }]
       }
     },
+    mounted(){
+      this.findArticle();
+    },
     methods:{
-
+      findArticle(){
+        axios.post('/article/findAll',{}).then(res => {
+          console.log(res)
+        })
+      }
     }
   }
 </script>
