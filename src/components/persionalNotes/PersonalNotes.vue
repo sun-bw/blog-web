@@ -13,7 +13,7 @@
         <!--搜索框-->
         <div class="content">
           <div class="content-input">
-            <input type="text" class="input" placeholder="请输入"></input>
+            <input type="text" class="input" placeholder="请输入"/>
             <el-button icon="el-icon-search" class="btn"></el-button>
           </div>
         </div>
