@@ -20,8 +20,8 @@
         <!--分类-->
         <div class="classification">
           <!--内容-->
-          <div v-for="item in data1" :key="item.id" class="title-content">
-            <div class="name">{{item.name}}</div>
+          <div v-for="item in categoryData" :key="item.id" class="title-content">
+            <div class="name">{{item.categoryName}}</div>
           </div>
         </div>
       </div>
@@ -52,28 +52,24 @@
             lei:'java',
           }
         ],
-        data1:[{
-          id:1,
-          name:'全部'
-        },{
-          id:2,
-          name:'CSS'
-        },{
-          id:3,
-          name:'HTML'
-        },{
-          id:4,
-          name:'JavaScript'
-        }]
+        categoryData:[]
       }
     },
     mounted(){
       this.findArticle();
+      this.findCategory();
     },
     methods:{
       findArticle(){
         axios.post('/article/findAll',{}).then(res => {
           console.log(res)
+        })
+      },
+      // 查询分类
+      findCategory(){
+        axios.post('/category/findCategory',{}).then(res => {
+          console.log(res)
+          this.categoryData = res.data
         })
       }
     }
