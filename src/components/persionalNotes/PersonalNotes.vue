@@ -20,8 +20,8 @@
         <!--分类-->
         <div class="classification">
           <!--内容-->
-          <div v-for="item in categoryData" :key="item.id" class="title-content">
-            <div class="name">{{item.categoryName}}</div>
+          <div v-for="item in categoryData" :key="item.categoryId" class="title-content">
+            <div class="name" @click="changeCategory(item.categoryId)">{{item.categoryName}}</div>
           </div>
         </div>
       </div>
@@ -71,6 +71,10 @@
           console.log(res)
           this.categoryData = res.data
         })
+      },
+      // 选择分类
+      changeCategory(val){
+        console.log(val)
       }
     }
   }
