@@ -3,9 +3,9 @@
       <!--文章内容-->
       <div class="article">
         <div v-for="item in data" :key="item.id" class="content">
-          <div style="font-size: 20px;font-weight: bold">{{item.name}}</div>
-          <div>{{item.time}}</div>
-          <div>本文属类：{{item.lei}}</div>
+          <div style="font-size: 20px;font-weight: bold">{{item.title}}</div>
+          <div>{{item.createTime}}</div>
+          <div>本文属类：{{item.categoryName}}</div>
         </div>
       </div>
       <!--搜索-->
@@ -32,26 +32,7 @@
   export default{
     data(){
       return{
-        data:[
-          {
-            id:1,
-            name:'关于什么什么什么蛇二刷i阿U盾你萨克华硕电脑阿速达',
-            time:2017-8-9,
-            lei:'java',
-          },
-          {
-            id:2,
-            name:'1',
-            time:2017-8-9,
-            lei:'java',
-          },
-          {
-            id:3,
-            name:'1',
-            time:2017-8-9,
-            lei:'java',
-          }
-        ],
+        data:[],
         categoryData:[]
       }
     },
@@ -63,6 +44,7 @@
       findArticle(){
         axios.post('/article/findAll',{}).then(res => {
           console.log(res)
+          this.data = res.data;
         })
       },
       // 查询分类
