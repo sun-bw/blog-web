@@ -2,7 +2,7 @@
   <div class="personNote">
       <!--文章内容-->
       <div class="article">
-        <div v-for="item in data" :key="item.id" class="content">
+        <div v-for="item in data" :key="item.id" class="content" @click="articleDetails(item.id)">
           <div style="font-size: 20px;font-weight: bold">{{item.title}}</div>
           <div>{{item.createTime}}</div>
           <div>本文属类：{{item.categoryName}}</div>
@@ -57,6 +57,14 @@
       // 选择分类
       changeCategory(val){
         console.log(val)
+      },
+
+      // 查看文章详情
+      articleDetails(id){
+        this.$router.push({
+          path:'/NoteDetails',
+          query:{id:id}
+        });
       }
     }
   }

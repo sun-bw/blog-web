@@ -27,6 +27,12 @@ const PersonalNotes = (resolve => {
   })
 })
 
+const NoteDetails = (resolve => {
+  import('@/components/persionalNotes/NoteDetails').then(module => {
+    resolve(module)
+  })
+})
+
 export default new Router({
   routes: [
     {
@@ -48,6 +54,11 @@ export default new Router({
       path:'/AboutMe',
       name:'AboutMe',
       component:AboutMe,
+    },
+    {
+      path:'/NoteDetails',
+      name:'NoteDetails',
+      component:NoteDetails
     }
   ]
 })
