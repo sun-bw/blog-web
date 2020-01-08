@@ -23,9 +23,10 @@
       </el-header>
       <!--页面内容，配置路由-->
       <el-main style="background: #f0f0f0">
-        <keep-alive>
+        <!-- 存在<keep-alive>的话，路由跳转后页面不会重新加载 -->
+        <!-- <keep-alive> -->
           <router-view/>
-        </keep-alive>
+        <!-- </keep-alive> -->
       </el-main>
       <!--页面尾部-->
       <el-footer>
@@ -40,7 +41,7 @@ export default {
   name: 'App',
   data(){
     return{
-      activeIndex:'',
+      activeIndex:'/',
       menuBackgroundColor:'#000000',//菜单栏背景色
       routerName:'',//监听滚动条是，参数。用于判断当前位置是不是首页
     }

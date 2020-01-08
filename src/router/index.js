@@ -39,26 +39,31 @@ export default new Router({
       path: '/',
       name: 'Home',
       component: Home,
+      router:true
     },
     {
       path:'/PersonalNotes',
       name:'PersonalNotes',
       component:PersonalNotes,
+      router:true
     },
     {
       path:'/TimeLine',
       name:'TimeLine',
       component:TimeLine,
+      router:true
     },
     {
       path:'/AboutMe',
       name:'AboutMe',
       component:AboutMe,
+      router:true
     },
     {
       path:'/NoteDetails',
       name:'NoteDetails',
-      component:NoteDetails
+      component:NoteDetails,
+      router:true
     }
   ]
 })
