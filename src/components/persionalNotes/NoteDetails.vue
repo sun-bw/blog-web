@@ -38,8 +38,43 @@ export default {
 </script>
 <style scoped>
 .personNote{
-    margin:60px auto 0px auto;
+    margin:80px auto 0px auto;
     display: flex;
-    width: 1280px;
     }
+     /*媒体查询，修改文章div的内容宽度*/
+@media screen and (max-width: 13660px){
+    .personNote{
+        width: 1280px;
+    }
+}
+@media screen and (max-width:1920px){
+    .personNote{
+        width:1280px;
+    }
+}
+@media screen and (max-width:1680px){
+    .personNote{
+        width:1280px;
+    }
+}
+@media screen and (max-width:1366px){
+    .personNote{
+        width:1066px;
+    }
+}
+@media screen and (max-width:1280px){
+    .personNote{
+        width:980px;
+    }
+}
+@media screen and (max-width:1024px){
+    .personNote{
+        width:724px;
+    }
+}
+@media screen and (max-width:800px){
+    .personNote{
+        width:100%;
+    }
+}
 </style>
