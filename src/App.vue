@@ -2,11 +2,11 @@
   <div>
     <el-container>
       <!--页面头部-->
-      <el-header class="header-content">
+      <div class="header-content" id="header-content">
         <div class="blog-name">墨染</div>
         <!--transparent-->
         <el-menu :router="true" :default-active="activeIndex" mode="horizontal" :background-color="menuBackgroundColor"
-                 text-color="#fff" active-text-color="#ffd04b" id="menu-content">
+                text-color="#fff" active-text-color="#ffd04b" id="menu-content">
           <el-menu-item index="/">
             <span slot="title">首页</span>
           </el-menu-item>
@@ -20,7 +20,13 @@
             <span slot="title">关于我</span>
           </el-menu-item>
         </el-menu>
-      </el-header>
+        <div class="picture">
+          <i class="el-icon-menu nav-picture" @click="openNav" v-if="mobileNavStatus"></i>
+          <i class="el-icon-close nav-picture" @click="closeNav" v-else></i>
+        </div>
+      </div>
+      <!-- 屏幕小于800的菜单导航栏 -->
+      <div id="nav-mobile"></div>
       <!--页面内容，配置路由-->
       <el-main style="background: #f0f0f0">
         <!-- 存在<keep-alive>的话，路由跳转后页面不会重新加载 -->
@@ -29,7 +35,7 @@
         <!-- </keep-alive> -->
       </el-main>
       <!--页面尾部-->
-      <el-footer>
+      <el-footer style="height:200px">
         <div> 页面尾部</div>
       </el-footer>
     </el-container>
@@ -44,6 +50,7 @@ export default {
       activeIndex:'/',
       menuBackgroundColor:'#000000',//菜单栏背景色
       routerName:'',//监听滚动条是，参数。用于判断当前位置是不是首页
+      mobileNavStatus:true,//手机端导航栏按钮状态
     }
   },
   watch:{
@@ -53,13 +60,14 @@ export default {
     $route(to,form){
       if(to.name === 'Home'){
         this.routerName = 'Home';
-        this.menuBackgroundColor = 'transparent';
-        if(document.documentElement.scrollTop > 100){
-          this.menuBackgroundColor = '#000000'
-        }
+        this.menuBackgroundColor = 'transparent'
+        // 修改页面头部颜色
+        document.getElementById('header-content').style.backgroundColor = 'transparent'
       }else {
         this.routerName = 'else';
-        this.menuBackgroundColor = '#000000'
+        this.menuBackgroundColor = '#000000';
+        // 修改页面头部颜色
+        document.getElementById('header-content').style.backgroundColor = '#000000'
       }
 
       let path = to.path;
@@ -93,12 +101,26 @@ export default {
         if(document.documentElement.scrollTop > 100){
           //更改导航栏颜色为黑色
           this.menuBackgroundColor = '#000000'
+          // 修改页面头部颜色
+          document.getElementById('header-content').style.backgroundColor = '#000000'
         }
         if(document.documentElement.scrollTop < 100){
           this.menuBackgroundColor = 'transparent'
+          // 修改页面头部颜色
+          document.getElementById('header-content').style.backgroundColor = 'transparent'
         }
-      }
+      } 
     },
+    // 页面宽度小于800px，打开菜单方法
+    openNav(){
+      this.mobileNavStatus = false;
+      document.getElementById('nav-mobile').style.display = 'block'
+    },
+    // 页面宽度小于800px，关闭菜单方法
+    closeNav(){
+      this.mobileNavStatus = true;
+      document.getElementById('nav-mobile').style.display = 'none'
+    }
   },
 
 }
@@ -117,14 +139,62 @@ export default {
     height: 60px;
     z-index: 999;
   }
+  .picture{
+    height: 60px;
+    display: flex;
+  }
+  .nav-picture{
+    color: #FFFFFF;
+    font-size: 30px;
+    margin: auto 0 auto 20px
+  }
   /*名字样式*/
   .blog-name{
     color: #FFFFFF;
     width: 140px;
     position: absolute;
     top: 40%;
-    left: 20%;
     z-index: 999;
+  }
+  #nav-mobile{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    overflow-y: auto;
+    /* -webkit-overflow-scrolling: touch; */
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,.92);
+    z-index: 2;
+    display: flex;
+    display: none;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    padding: 0 1rem;
+    padding-bottom: 8rem;
+  }
+  @media screen and (min-width: 800px) and (max-width: 1920px) {
+    #phone-menu-content{
+      display: none;
+    }
+    .picture{
+      display: none;
+    }
+    /*名字样式*/
+    .blog-name{
+      left: 20%;
+    }
+  }
+  @media screen and (max-width:800px){
+    /* 屏幕小800时，隐藏导航菜单栏 */
+    #menu-content{
+      display: none;
+    }
+    .blog-name{
+      left: 85%;
+    }
   }
 </style>
 <style>
@@ -144,5 +214,4 @@ export default {
   .el-menu.el-menu--horizontal{
     border-bottom:0px
   }
-
 </style>
