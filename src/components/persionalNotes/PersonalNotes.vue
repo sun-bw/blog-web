@@ -4,9 +4,11 @@
       <div class="article">
         <div v-for="item in data" :key="item.id" class="content" @click="articleDetails(item.id)">
           <div style="font-size: 20px;font-weight: bold">{{item.title}}</div>
-          <div>{{item.createTime}}</div>
           <div style="color:#999">{{item.introduction}}</div>
-          <div>本文属类：{{item.categoryName}}</div>
+          <div style="display:flex">
+            <div>{{item.categoryName}}</div>
+            <div style="margin-left:20px">{{item.createTime}}</div>
+          </div>
         </div>
       </div>
       <div>
