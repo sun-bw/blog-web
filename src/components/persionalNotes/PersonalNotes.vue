@@ -5,25 +5,29 @@
         <div v-for="item in data" :key="item.id" class="content" @click="articleDetails(item.id)">
           <div style="font-size: 20px;font-weight: bold">{{item.title}}</div>
           <div>{{item.createTime}}</div>
+          <div style="color:#999">{{item.introduction}}</div>
           <div>本文属类：{{item.categoryName}}</div>
         </div>
       </div>
-      <!--搜索-->
-      <div class="search">
-        <!--搜索框-->
-        <div class="content">
-          <div class="content-input">
-            <input type="text" class="input" placeholder="请输入"/>
-            <el-button icon="el-icon-search" class="btn"></el-button>
+      <div>
+        <!--搜索-->
+        <div class="search">
+          <!--搜索框-->
+          <div class="content">
+            <div class="content-input">
+              <input type="text" class="input" placeholder="请输入"/>
+              <el-button icon="el-icon-search" class="btn"></el-button>
+            </div>
+          </div>
+          <!--分类-->
+          <div class="classification">
+            <!--内容-->
+            <div v-for="item in categoryData" :key="item.categoryId" class="title-content">
+              <div class="name" @click="changeCategory(item.categoryId)">{{item.categoryName}}</div>
+            </div>
           </div>
         </div>
-        <!--分类-->
-        <div class="classification">
-          <!--内容-->
-          <div v-for="item in categoryData" :key="item.categoryId" class="title-content">
-            <div class="name" @click="changeCategory(item.categoryId)">{{item.categoryName}}</div>
-          </div>
-        </div>
+        <div class="search1"></div>
       </div>
   </div>
 </template>
@@ -71,8 +75,9 @@
 </script>
 <style scoped>
   .personNote{
-    margin:60px auto 0px auto;
+    margin:60px auto 20px auto;
     display: flex;
+    justify-content: center;
     width: 1280px;
   }
   /*媒体查询，修改文章div的内容宽度*/
@@ -87,13 +92,23 @@
   .article .content{
     background: #ffffff;
     margin-top: 20px;
-    padding: 20px 20px
+    padding: 20px 20px;
+    box-shadow: 10px 10px 5px #c0c4cc;
+    cursor:pointer
   }
   .search{
     width: 300px;
-    background: #ffffff;
+    background: #f0f0f0;
     margin-top: 20px;
-    margin-left: 20px
+    margin-left: 30px;
+    position: fixed;
+    box-shadow: 10px 10px 5px #c0c4cc;
+  }
+  .search1{
+    width: 300px;
+    background: #f0f0f0;
+    margin-top: 20px;
+    margin-left: 30px;
   }
   .search .input{
     height: 40px;
@@ -126,8 +141,8 @@
     background: grey
   }
   .classification{
-    margin-bottom: 20px;
-    margin-top: 20px;
+    padding: 20px 0;
+    background-color: #ffffff
   }
   .classification .name{
     margin: 0 30px;

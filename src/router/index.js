@@ -33,6 +33,12 @@ const NoteDetails = (resolve => {
   })
 })
 
+const Talkanymore = (resolve => {
+  import('@/components/Talkanymore').then(module => {
+    resolve(module)
+  })
+})
+
 export default new Router({
   routes: [
     {
@@ -63,6 +69,12 @@ export default new Router({
       path:'/NoteDetails',
       name:'NoteDetails',
       component:NoteDetails,
+      router:true
+    },
+    {
+      path:'/Talkanymore',
+      name:'Talkanymore',
+      component:Talkanymore,
       router:true
     }
   ]

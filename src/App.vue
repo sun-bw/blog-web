@@ -16,6 +16,9 @@
           <el-menu-item index="/TimeLine">
             <span slot="title">时间轴</span>
           </el-menu-item>
+          <el-menu-item index='/Talkanymore'>
+            <span slot="title">闲言碎语</span>
+          </el-menu-item>
           <el-menu-item index="/AboutMe">
             <span slot="title">关于我</span>
           </el-menu-item>
@@ -26,7 +29,15 @@
         </div>
       </div>
       <!-- 屏幕小于800的菜单导航栏 -->
-      <div id="nav-mobile"></div>
+      <div id="nav-mobile">
+        <div style="padding-top:60px;font-size:25px">
+          <router-link :to="{path:'/'}" style="color:#ffffff;">首页</router-link>
+          <router-link :to="{path:'/PersonalNotes'}" style="color:#ffffff">个人笔记</router-link>
+          <router-link :to="{path:'/TimeLine'}" style="color:#ffffff">时间轴</router-link>
+          <router-link :to="{path:'/Talkanymore'}" style="color:#ffffff">闲言碎语</router-link>
+          <router-link :to="{path:'/AboutMe'}" style="color:#ffffff">关于我</router-link>
+        </div>
+      </div>
       <!--页面内容，配置路由-->
       <el-main style="background: #f0f0f0">
         <!-- 存在<keep-alive>的话，路由跳转后页面不会重新加载 -->
@@ -69,7 +80,7 @@ export default {
         // 修改页面头部颜色
         document.getElementById('header-content').style.backgroundColor = '#000000'
       }
-
+      this.closeNav();
       let path = to.path;
       this.setActiveIndex(path);
     }
@@ -120,6 +131,9 @@ export default {
     closeNav(){
       this.mobileNavStatus = true;
       document.getElementById('nav-mobile').style.display = 'none'
+    },
+    aaa(){
+      console.log(111)
     }
   },
 
