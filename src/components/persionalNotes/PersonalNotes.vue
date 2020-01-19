@@ -3,11 +3,15 @@
       <!--文章内容-->
       <div class="article">
         <div v-for="item in data" :key="item.id" class="content" @click="articleDetails(item.id)">
-          <div style="font-size: 20px;font-weight: bold">{{item.title}}</div>
-          <div style="color:#999">{{item.introduction}}</div>
-          <div style="display:flex">
-            <div>{{item.categoryName}}</div>
-            <div style="margin-left:20px">{{item.createTime}}</div>
+          <div class="title">{{item.title}}</div>
+          <div class="article-content">{{item.content}}</div>
+          <div class="article-footer">
+            <div class="line"></div>
+            <div class="info">
+              <div><i class="el-icon-user">墨染</i></div>
+              <div class="info-content"><i class="el-icon-collection"></i>{{item.categoryName}}</div>
+              <div class="info-content"><i class="el-icon-date"></i>{{item.createTime}}</div>
+            </div>
           </div>
         </div>
       </div>
@@ -96,7 +100,41 @@
     margin-top: 20px;
     padding: 20px 20px;
     box-shadow: 10px 10px 5px #c0c4cc;
-    cursor:pointer
+    cursor:pointer;
+    height: 160px;
+    border-radius: 15px;
+    position: relative;
+  }
+  .article .title{
+    font-size: 20px;
+    color:#333333
+  }
+  .article-content{
+    color:#98a6ad;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    display:-webkit-box;
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:3;
+    margin:10px 0
+  }
+  .article .line{
+    border-bottom:1px solid #98a6ad
+  }
+  .article .info{
+    display:flex;
+    color:#98a6ad;
+    padding-top:10px;
+    /* position: absolute;
+    bottom: 10px; */
+  }
+  .info-content{
+    margin-left: 20px;
+  }
+  .article-footer{
+    position:absolute;
+    bottom: 10px;
+    width: calc(100% - 40px);
   }
   .search{
     width: 300px;
@@ -161,5 +199,16 @@
     height: 40px;
     background-color: #f8f9f7;
     z-index: 0;
+  }
+  @media screen and (max-width:800px){
+    .search{
+      display: none;
+    }
+    .search1{
+      display: none;
+    }
+    .article{
+      width: 100%
+    }
   }
 </style>
