@@ -21,8 +21,8 @@
           <!--搜索框-->
           <div class="content">
             <div class="content-input">
-              <input type="text" class="input" placeholder="请输入"/>
-              <el-button icon="el-icon-search" class="btn"></el-button>
+              <input type="text" class="input" placeholder="请输入" v-model="title"/>
+              <el-button icon="el-icon-search" class="btn" @click="findArticle()"></el-button>
             </div>
           </div>
           <!--分类-->
@@ -43,7 +43,9 @@
     data(){
       return{
         data:[],
-        categoryData:[]
+        categoryData:[],
+        title:'',
+        categoryId:'',
       }
     },
     mounted(){
@@ -52,7 +54,10 @@
     },
     methods:{
       findArticle(){
-        axios.post('/article/findAll',{}).then(res => {
+        axios.post('/article/findAll',{
+          title:this.title,
+          categoryId:this.categoryId
+        }).then(res => {
           console.log(res)
           this.data = res.data;
         })
@@ -67,6 +72,8 @@
       // 选择分类
       changeCategory(val){
         console.log(val)
+        this.categoryId = val
+        this.findArticle();
       },
 
       // 查看文章详情
