@@ -107,7 +107,7 @@
     margin-top: 20px;
     padding: 20px 20px;
     box-shadow: 10px 10px 5px #c0c4cc;
-    cursor:pointer;
+    /* cursor:pointer; */
     height: 160px;
     border-radius: 15px;
     position: relative;
@@ -200,7 +200,7 @@
   .classification .title-content{
     height: 40px;
     line-height: 40px;
-    cursor: pointer;
+    /* cursor: pointer; */
   }
   .classification .title-content:hover{
     border-right: 6px solid #484947;

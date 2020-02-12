@@ -23,7 +23,15 @@ import axios from '@/api/api'
     methods:{
       findTimeline(){
         axios.post('/timeline/findTimeline','').then(res => {
-          this.data = res.data
+          this.data = res.data;
+          // 进行时间降序排列
+          this.data.sort((a,b) => {
+            if(a.timelineTime > b.timelineTime){
+              return -1;
+            }else{
+              return 1;
+            }
+          });
         })
       }
     }

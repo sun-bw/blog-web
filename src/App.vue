@@ -215,13 +215,14 @@ export default {
   /*去掉body的magin*/
   body{
     margin: 0px;
+    cursor: url('../static/img/7de5437.png'), auto;
   }
   .el-main{
     padding: 0px;
   }
   .app-main{
     min-height: 100vh;
-    background: #f0f0f0;
+    background: #eef2f6;
   }
   /*导航栏样式*/
   #menu-content{
