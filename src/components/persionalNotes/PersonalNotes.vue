@@ -185,7 +185,8 @@
   }
   .search .content{
     padding: 20px;
-    background: grey
+    background: grey;
+    border-radius: 10px 10px 0px 0px;
   }
   .classification{
     padding: 20px 0;

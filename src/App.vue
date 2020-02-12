@@ -39,7 +39,7 @@
         </div>
       </div>
       <!--页面内容，配置路由-->
-      <el-main style="background: #f0f0f0">
+      <el-main class="app-main">
         <!-- 存在<keep-alive>的话，路由跳转后页面不会重新加载 -->
         <!-- <keep-alive> -->
           <router-view/>
@@ -218,6 +218,10 @@ export default {
   }
   .el-main{
     padding: 0px;
+  }
+  .app-main{
+    min-height: 100vh;
+    background: #f0f0f0;
   }
   /*导航栏样式*/
   #menu-content{

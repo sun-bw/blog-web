@@ -40,7 +40,12 @@ export default {
 .personNote{
     margin:80px auto 0px auto;
     display: flex;
+    /* box-shadow: 10px 10px 5px #c0c4cc; */
+    margin-bottom: 30px;
     }
+.editor{
+    box-shadow: 3px 0px 10px 10px #c0c4cc;
+}
      /*媒体查询，修改文章div的内容宽度*/
 @media screen and (max-width: 13660px){
     .personNote{
