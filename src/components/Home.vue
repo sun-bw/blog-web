@@ -1,8 +1,8 @@
 <template>
   <div class="home">
     <div class="content">
-      <!-- <p>一个初入江湖</p> -->
-      <!--<p>伪文艺程序员</p>-->
+      <p>一个初入江湖de</p>
+      <p>伪文艺de程序员</p>
     </div>
   </div>
 </template>
@@ -29,7 +29,7 @@
 <style scoped>
   .home{
     background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../../static/img/homeImg.jpg);
-    height: 937px;
+    height: 100vh;
     background-size: 100% 100%;
     background-attachment:fixed;
   }
