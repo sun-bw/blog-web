@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-container>
+    <div>
       <!--页面头部-->
       <div class="header-content" id="header-content">
         <div class="blog-name">墨染</div>
@@ -11,7 +11,7 @@
             <span slot="title">首页</span>
           </el-menu-item>
           <el-menu-item index="/PersonalNotes">
-            <span slot="title">个人笔记</span>
+            <span slot="title">笔记本</span>
           </el-menu-item>
           <el-menu-item index="/TimeLine">
             <span slot="title">时间轴</span>
@@ -32,7 +32,7 @@
       <div id="nav-mobile">
         <div style="padding-top:60px;font-size:25px">
           <router-link :to="{path:'/'}" style="color:#ffffff;">首页</router-link>
-          <router-link :to="{path:'/PersonalNotes'}" style="color:#ffffff">个人笔记</router-link>
+          <router-link :to="{path:'/PersonalNotes'}" style="color:#ffffff">笔记本</router-link>
           <router-link :to="{path:'/TimeLine'}" style="color:#ffffff">时间轴</router-link>
           <router-link :to="{path:'/Talkanymore'}" style="color:#ffffff">闲言碎语</router-link>
           <router-link :to="{path:'/AboutMe'}" style="color:#ffffff">关于我</router-link>
@@ -46,10 +46,10 @@
         <!-- </keep-alive> -->
       </el-main>
       <!--页面尾部-->
-      <el-footer style="height:200px">
-        <div> 页面尾部</div>
-      </el-footer>
-    </el-container>
+      <div class="footer">
+        <div class="footer-content">Copyright © 2019-2020 墨染。 辽ICP备20001331号</div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -188,6 +188,17 @@ export default {
     flex-direction: column;
     padding: 0 1rem;
     padding-bottom: 8rem;
+  }
+  .footer{
+    height:65px;
+    background: #eef2f6;
+    padding-top: 20px;
+  }
+  .footer-content{
+    text-align: center;
+    line-height: 56px;
+    height: 56px;
+    border-top: 1px dashed rgba(0,0,0,.5);
   }
   @media screen and (min-width: 800px) and (max-width: 1920px) {
     #phone-menu-content{
