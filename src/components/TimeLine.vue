@@ -47,7 +47,9 @@ import axios from '@/api/api'
 <style scoped>
 .timeline{
   padding: 0 20%;
-  margin-top: 100px
+  margin-top: 100px;
+  position: relative;
+  z-index: 999;
 }
 .timeline-li{
   position:relative;
@@ -85,6 +87,7 @@ import axios from '@/api/api'
   top:-20px;
   width:100px;
   text-align:center;
+  
 }
 .pp{
   margin-left:20px;
