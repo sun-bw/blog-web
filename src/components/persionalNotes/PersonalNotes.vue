@@ -93,7 +93,7 @@
     justify-content: center;
     width: 1280px;
     position: relative;
-    z-index: 999;
+    z-index: 998;
   }
   /*媒体查询，修改文章div的内容宽度*/
   @media screen and (max-width: 1366px){

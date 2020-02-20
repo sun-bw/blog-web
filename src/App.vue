@@ -246,7 +246,7 @@ export default {
   }
   .app-main{
     min-height: 100vh;
-    background: black;
+    background: #eef2fe;
   }
   /*导航栏样式*/
   #menu-content{

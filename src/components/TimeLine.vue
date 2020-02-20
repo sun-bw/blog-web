@@ -49,7 +49,7 @@ import axios from '@/api/api'
   padding: 0 20%;
   margin-top: 100px;
   position: relative;
-  z-index: 999;
+  z-index: 998;
 }
 .timeline-li{
   position:relative;
