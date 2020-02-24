@@ -46,21 +46,18 @@
         <!-- </keep-alive> -->
       </el-main>
       <!--页面尾部-->
-      <div class="footer">
-        <div class="footer-image">
-          <a href="https://github.com/sun-bw" class="footer-a">
-            <img src='../static/img/github.jpg'>
-          </a>
-        </div>
-        <div class="footer-content">Copyright © 2019-2020 墨染。 辽ICP备20001331号</div>
-      </div>
+      <blogFooter></blogFooter>
     </div>
   </div>
 </template>
 
 <script>
+import blogFooter from './Footer'
 export default {
   name: 'App',
+  components:{
+    blogFooter
+  },
   data(){
     return{
       activeIndex:'/',
@@ -193,22 +190,6 @@ export default {
     flex-direction: column;
     padding: 0 1rem;
     padding-bottom: 8rem;
-  }
-  .footer{
-    background: #eef2f6;
-    padding-top: 50px;
-  }
-  .footer-image{
-    display:flex;
-  }
-  .footer-a{
-    margin:auto
-  }
-  .footer-content{
-    text-align: center;
-    line-height: 56px;
-    height: 56px;
-    border-top: 1px dashed rgba(0,0,0,.5);
   }
   @media screen and (min-width: 800px) and (max-width: 1920px) {
     #phone-menu-content{
