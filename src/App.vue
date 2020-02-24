@@ -1,11 +1,6 @@
 <template>
   <div>
     <div>
-      <vue-particles color="#dedede" :particleOpacity="0.7" :particlesNumber="60" shapeType="circle" 
-      :particleSize="4" linesColor="#fff" :linesWidth="1" :lineLinked="true" :lineOpacity="0.4" 
-      :linesDistance="150" :moveSpeed="2" :hoverEffect="true" hoverMode="grab" :clickEffect="true" 
-      clickMode="push" class="particles">
-      </vue-particles>
       <!--页面头部-->
       <div class="header-content" id="header-content">
         <div class="blog-name">墨染</div>
@@ -225,14 +220,6 @@ export default {
     .blog-name{
       left: 85%;
     }
-  }
-  .particles{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
   }
 </style>
 <style>
