@@ -4,7 +4,7 @@ import Vue from 'vue'
 
 //axios配置
 //响应时间
-axios.defaults.timeout = 5000;
+axios.defaults.timeout = 50000;
 //配置cookie
 // axios.defaults.withCredentials = true
 //请求头

@@ -233,7 +233,7 @@ export default {
   }
   .app-main{
     min-height: 100vh;
-    background: #eef2fe;
+    background: #eef2f6;
   }
   /*导航栏样式*/
   #menu-content{
