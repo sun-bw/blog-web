@@ -58,20 +58,24 @@
           title:this.title,
           categoryId:this.categoryId
         }).then(res => {
-          console.log(res)
           this.data = res.data;
+          // 查询后清空文章id
+          this.categoryId = '';
+          // 查询后重置滚动条
+          document.documentElement.scrollTop = 0;
         })
       },
       // 查询分类
       findCategory(){
         axios.post('/category/findCategory',{}).then(res => {
-          console.log(res)
-          this.categoryData = res.data
+          // 在数组最前面加上
+          // 第一个0代表数组的索引位置，第二个0代表删除元素的数量，后面带边新增的元素内容
+          res.data.splice(0,0,{categoryId: 0,categoryName: "全部"})
+          this.categoryData = res.data;
         })
       },
       // 选择分类
       changeCategory(val){
-        console.log(val)
         this.categoryId = val
         this.findArticle();
       },

@@ -7,8 +7,11 @@
       clickMode="push" class="particles">
     </vue-particles>
     <div class="content">
-      <!-- <p>一个初入江湖de</p>
-      <p>伪文艺de程序员</p> -->
+      <p>一个初入江湖de</p>
+      <p>伪文艺de程序员</p>
+    </div>
+    <div class="downcontent">
+      <i class="el-icon-arrow-down downPic"></i>
     </div>
   </div>
 </template>
@@ -43,6 +46,9 @@
     .home{
       background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../../static/img/computer2.jpg);
     }
+    .downcontent{
+      display: none;
+    }
   }
   .home .content{
     color: #FFFFFF;
@@ -60,6 +66,16 @@
     width: 100%;
     height: 100%;
     z-index: 1;
+  }
+  .downcontent{
+    position: absolute;
+    bottom:10px;
+    left: 48%;
+    z-index: 998;
+  }
+  .downPic{
+    font-size: 50px;
+    color:#FFFFFF;
   }
 </style>
 <style>

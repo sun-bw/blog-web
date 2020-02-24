@@ -172,9 +172,9 @@ export default {
     padding-bottom: 8rem;
 }
 @media screen and (min-width: 800px) and (max-width: 1920px) {
-#phone-menu-content{
-    display: none;
-}
+    #phone-menu-content{
+        display: none;
+    }
     .picture{
         display: none;
     }
