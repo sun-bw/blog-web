@@ -1,19 +1,19 @@
 <template>
   <div class="timeline">
-    <ul>
-      <li class="tl-header" v-for="(item,index) in data" :key="index">
+    <ul class="timeline-content" v-for="(item,index) in data" :key="index">
+      <li class="tl-header" >
         <h2 class="btn">{{item.year}}</h2>
-        <div class="tl-body" v-for="(item1,index1) in item.list" :key="index1">
+      </li>
+      <div class="tl-body" v-for="(item1,index1) in item.list" :key="index1">
           <li class="tl-item">
             <div class="tl-wrap">
               <span class="tl-date">{{item1.date}}</span>
               <h3 class="tl-content">
-                <span class="arrow-info">{{item1.content}}</span>
+                <span class="arrow arrow-info">{{item1.content}}</span>
               </h3>
             </div>
           </li>
-        </div>
-      </li>
+      </div>
     </ul>
   </div>
 </template>
@@ -42,7 +42,7 @@ import axios from '@/api/api'
           // 遍历返回数组，拆分时间
           for(var [index,value] of res.data.entries()){
             var a = value.timelineTime.split('-')
-            value.year = a[0] + '-' + a[1]
+            value.year = a[0] + '年' + a[1] + '月'
             value.date = a[2]
           }
           // 进行重构数组，
@@ -85,5 +85,74 @@ import axios from '@/api/api'
   margin-top: 100px;
   position: relative;
   z-index: 998;
+}
+.timeline-content{
+  padding: 0;
+  margin: 0;
+}
+/* 头部年月 */
+.tl-header{
+  display: block;
+  width: 12em;
+  margin-right: 2px;
+  margin-left: 2px;
+  text-align: center;
+}
+.btn{
+  display: inline-block;
+  font-size: 12px;
+  padding:10px 10px;
+  border-radius: 50px;
+  color: #fff!important;
+  background-color: #23b7e5;
+  border-color: #23b7e5;
+}
+/* 内容 */
+.tl-item{
+  display: block;
+}
+.tl-wrap{
+  border-color: #23b7e5;
+  display: block;
+  padding: 15px 0 15px 20px;
+  margin-left: 6em;
+  border-style: solid;
+  border-width: 0 0 0 4px;
+}
+/* 圆圈 */
+.tl-wrap:before{
+    position: relative;
+    top: 15px;
+    float: left;
+    width: 10px;
+    height: 10px;
+    margin-left: -27px;
+    background: #edf1f2;
+    border-color: inherit;
+    border-style: solid;
+    border-width: 3px;
+    border-radius: 50%;
+    content: "";
+    box-shadow: 0 0 0 4px #f0f3f4;
+}
+/* 日期 */
+.tl-date{
+    position: relative;
+    top: 10px;
+    display: block;
+    float: left;
+    width: 4.5em;
+    margin-left: -7.5em;
+    text-align: right;
+}
+/* 内容 */
+.tl-content{
+    position: relative;
+    display: inline-block;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 15px;
+    padding-left: 15px;
+    background: #23b7e5
 }
 </style>
