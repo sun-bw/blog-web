@@ -1,16 +1,17 @@
 <template>
   <div class="timeline">
     <ul>
-      <li v-for="(item,index) in data" :key="index" class="timeline-li">
-        <div class="tl-vertical-line"></div>
-        <div class="tl-circle"></div>
-        <div v-if="index % 2 == 0">
-          <div class="tl-content time dd">{{item.timelineTime}}</div>
-          <div class="tl-content timecontent pp" style="top:-20px;">{{item.timelineContent}}</div>
-        </div>
-        <div v-if="index % 2 != 0">
-          <div class="tl-content time pp">{{item.timelineTime}}</div>
-          <div class="tl-content timecontent dd rightContent" style="top:-20px">{{item.timelineContent}}</div>
+      <li class="tl-header" v-for="(item,index) in data" :key="index">
+        <h2 class="btn">{{item.year}}</h2>
+        <div class="tl-body" v-for="(item1,index1) in item.list" :key="index1">
+          <li class="tl-item">
+            <div class="tl-wrap">
+              <span class="tl-date">{{item1.date}}</span>
+              <h3 class="tl-content">
+                <span class="arrow-info">{{item1.content}}</span>
+              </h3>
+            </div>
+          </li>
         </div>
       </li>
     </ul>
@@ -30,15 +31,49 @@ import axios from '@/api/api'
     methods:{
       findTimeline(){
         axios.post('/timeline/findTimeline','').then(res => {
-          this.data = res.data;
           // 进行时间降序排列
-          this.data.sort((a,b) => {
+          res.data.sort((a,b) => {
             if(a.timelineTime > b.timelineTime){
               return -1;
             }else{
               return 1;
             }
           });
+          // 遍历返回数组，拆分时间
+          for(var [index,value] of res.data.entries()){
+            var a = value.timelineTime.split('-')
+            value.year = a[0] + '-' + a[1]
+            value.date = a[2]
+          }
+          // 进行重构数组，
+          // 相同年月的数组进行合并，合并后新增数据
+          // 一个数组存在元素为 日期，内容，id
+          var map={};
+          var list = [];
+          for(var i=0;i<res.data.length;i++){
+              var ai = res.data[i]
+              // !map[ai.year] 在map存在ai.year的值时，判断为false
+              if(!map[ai.year]){
+                  console.log(map[ai.year])
+                  list.push({
+                      // id:ai.id,
+                      year:ai.year,
+                      list:[{date:ai.date,content:ai.timelineContent}]
+                  })
+                  map[ai.year] = ai.year;
+              }else{
+                  for(var j=0;j<list.length;j++){
+                      var dj = list[j]
+                      if(dj.year == ai.year){
+                          dj.list.push({date:ai.date,content:ai.timelineContent})
+                          break;
+                      }
+                  }
+              }
+              
+          }
+          this.data = list;
+          console.log(this.data)
         })
       }
     }
@@ -50,53 +85,5 @@ import axios from '@/api/api'
   margin-top: 100px;
   position: relative;
   z-index: 998;
-}
-.timeline-li{
-  position:relative;
-  height:90px;
-  padding-bottom:20px;
-  list-style:none;
-  left:50%
-}
-.tl-vertical-line{
-  border-left:2px solid #23b7e5;
-  position:absolute;
-  height:80px;
-  left:1%;
-  margin-top:20px;
-}
-.tl-circle{
-  border-radius:50%;
-  background-color: #23b7e5;
-  height:12px;
-  width:12px
-}
-.tl-content{
-  height:50px;
-  line-height:50px;
-  position: absolute;
-  font-size:14px;
-}
-.timecontent{
-  background:#23b7e5;
-  min-width:500px;
-  padding: 0 15px;
-  color: #ffffff;
-}
-.time{
-  top:-20px;
-  width:100px;
-  text-align:center;
-  
-}
-.pp{
-  margin-left:20px;
-}
-.dd{
-  right:102%;
-}
-.rightContent{
-  display: flex;
-  justify-content: flex-end;
 }
 </style>
