@@ -15,6 +15,13 @@
           </li>
       </div>
     </ul>
+    <div style=" width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-right: 10px solid red;
+    border-bottom: 10px solid transparent;">
+
+    </div>
   </div>
 </template>
 <script>
