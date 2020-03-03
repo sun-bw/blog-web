@@ -2,14 +2,30 @@
   <div class="timeline">
     <ul class="timeline-content" v-for="(item,index) in data" :key="index">
       <li class="tl-header" >
-        <h2 class="btn">{{item.year}}</h2>
+        <h2 class="btn" :style="{background:index%6 == 1 ? '#333' : 
+                                            index%6 == 2 ? '#fad733' :
+                                            index%6 == 3 ? '#fad733' :
+                                            index%6 == 4 ? '#111' :
+                                            index%6 == 5 ? '#7266ba' : '#27c24c'}" :id="index">{{item.year}}</h2>
       </li>
       <div class="tl-body" v-for="(item1,index1) in item.list" :key="index1">
           <li class="tl-item">
-            <div class="tl-wrap">
+            <div class="tl-wrap" :style="{borderColor:index%6 == 1 ? '#333' : 
+                                                        index%6 == 2 ? '#fad733' :
+                                                        index%6 == 3 ? '#fad733' :
+                                                        index%6 == 4 ? '#111' :
+                                                        index%6 == 5 ? '#7266ba' : '#27c24c'}">
               <span class="tl-date">{{item1.date}}</span>
-              <div class="triangle"></div>
-              <h3 class="tl-content">
+              <div class="triangle" :style="{borderRight:index%6 == 1 ? '10px solid #333' : 
+                                                        index%6 == 2 ? '10px solid #fad733' :
+                                                        index%6 == 3 ? '10px solid #fad733' :
+                                                        index%6 == 4 ? '10px solid #111' :
+                                                        index%6 == 5 ? '10px solid #7266ba' : '10px solid #27c24c'}"></div>
+              <h3 class="tl-content" :style="{background:index%6 == 1 ? '#333' : 
+                                                        index%6 == 2 ? '#fad733' :
+                                                        index%6 == 3 ? '#fad733' :
+                                                        index%6 == 4 ? '#111' :
+                                                        index%6 == 5 ? '#7266ba' : '#27c24c'}">
                 <span class="arrow arrow-info">{{item1.content}}</span>
               </h3>
             </div>
@@ -72,7 +88,6 @@ import axios from '@/api/api'
                       }
                   }
               }
-              
           }
           this.data = list;
         })
@@ -159,6 +174,7 @@ import axios from '@/api/api'
     left: 10px;
     top:-10px;
     color: #fff;
+    border-radius: 5px
 }
 .triangle{
   width: 0;
