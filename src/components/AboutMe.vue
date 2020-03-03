@@ -1,9 +1,7 @@
 <template>
   <div class="aboutMe">
     <!-- 头像 -->
-    <!-- <div>
-      奥术大师
-    </div> -->
+    <infoleft></infoleft>
     <div class="content">
       <!-- 个人信息 -->
       <div class="personInfo">
@@ -57,7 +55,11 @@
   </div>
 </template>
 <script>
+import infoleft from './Infoleft'
 export default {
+  components:{
+    infoleft
+  },
   data(){
     return{
 

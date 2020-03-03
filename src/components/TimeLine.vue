@@ -174,7 +174,7 @@ import axios from '@/api/api'
     left: 10px;
     top:-10px;
     color: #fff;
-    border-radius: 5px
+    border-radius: 5px 
 }
 .triangle{
   width: 0;
