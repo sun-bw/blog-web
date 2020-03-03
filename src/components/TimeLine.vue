@@ -15,8 +15,8 @@
             </div>
           </li>
       </div>
-      <div class="tl-start">开始</div>
     </ul>
+    <div class="tl-start">开始</div>
   </div>
 </template>
 <script>
@@ -75,7 +75,6 @@ import axios from '@/api/api'
               
           }
           this.data = list;
-          console.log(this.data)
         })
       }
     }
@@ -108,6 +107,7 @@ import axios from '@/api/api'
   color: #fff!important;
   background-color: #23b7e5;
   border-color: #23b7e5;
+  margin:0;
 }
 /* 内容 */
 .tl-item{
@@ -124,7 +124,7 @@ import axios from '@/api/api'
 /* 圆圈 */
 .tl-wrap:before{
     position: relative;
-    top: 30px;
+    top: 42px;
     float: left;
     width: 10px;
     height: 10px;
@@ -140,7 +140,7 @@ import axios from '@/api/api'
 /* 日期 */
 .tl-date{
     position: relative;
-    top: 27px;
+    top: 39px;
     display: block;
     float: left;
     width: 4.5em;
@@ -157,7 +157,8 @@ import axios from '@/api/api'
     padding-left: 15px;
     background: #23b7e5;
     left: 10px;
-    top:-23px;
+    top:-10px;
+    color: #fff;
 }
 .triangle{
   width: 0;
@@ -166,7 +167,7 @@ import axios from '@/api/api'
   border-right: 10px solid red;
   border-bottom: 10px solid transparent;
   position: relative;
-  top: 27px;
+  top: 40px;
 }
 .tl-start{
   border-radius: 10px;
