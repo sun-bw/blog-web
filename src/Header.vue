@@ -161,7 +161,7 @@ export default {
     top: 0;
     left: 0;
     background: rgba(0,0,0,.92);
-    z-index: 2;
+    z-index: 999;
     display: flex;
     display: none;
     -webkit-box-orient: vertical;
