@@ -72,17 +72,18 @@ export default {
 </script>
 <style scoped>
 .aboutMe{
-  margin:60px 0px 20px 0px;
+  margin:60px auto 20px auto;
   padding-top: 20px;
-  /* height: calc(100vh - 100px); */
   display: flex;
   justify-content: center;
+  max-width: 1200px;
+  width: 100%;
 }
 .content{
   background-color: #ffffff;
   border-radius: 10px;
   padding: 20px 10px;
-  width: 60%;
+  width: 75%;
   /* height: calc(100vh - 200px); */
   /* overflow-y: auto; */
   z-index: 998;
