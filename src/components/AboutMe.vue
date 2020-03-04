@@ -11,7 +11,7 @@
       <div class="aoboutMe">
         <p>墨染。</p>
         <div class="contentInfo">
-          <p>一个出入江湖伪文艺的95后程序员。</p>
+          <p>一个初入江湖伪文艺的95后程序员。</p>
           <p>出生于吉林某座美丽的小城。</p>
           <p>喜欢有趣的事，有趣的人。</p>
           <p>喜欢优美的文字。</p>
@@ -74,7 +74,7 @@ export default {
 .aboutMe{
   margin:60px 0px 20px 0px;
   padding-top: 20px;
-  height: calc(100vh - 100px);
+  /* height: calc(100vh - 100px); */
   display: flex;
   justify-content: center;
 }
@@ -83,8 +83,8 @@ export default {
   border-radius: 10px;
   padding: 20px 10px;
   width: 60%;
-  height: calc(100vh - 200px);
-  overflow-y: auto;
+  /* height: calc(100vh - 200px); */
+  /* overflow-y: auto; */
   z-index: 998;
   position: relative;
 }
