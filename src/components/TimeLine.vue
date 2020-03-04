@@ -1,14 +1,16 @@
 <template>
   <div class="timeline">
-    <ul class="timeline-content" v-for="(item,index) in data" :key="index">
-      <li class="tl-header" >
-        <h2 class="btn" :style="{background:index%6 == 1 ? '#333' : 
-                                            index%6 == 2 ? '#fad733' :
-                                            index%6 == 3 ? '#fad733' :
-                                            index%6 == 4 ? '#111' :
-                                            index%6 == 5 ? '#7266ba' : '#27c24c'}" :id="index">{{item.year}}</h2>
-      </li>
-      <div class="tl-body" v-for="(item1,index1) in item.list" :key="index1">
+    <Infoleft></Infoleft>
+    <div class="timelineInfo">
+      <ul class="timeline-content" v-for="(item,index) in data" :key="index">
+        <li class="tl-header" >
+          <h2 class="btn" :style="{background:index%6 == 1 ? '#333' : 
+                                              index%6 == 2 ? '#fad733' :
+                                              index%6 == 3 ? '#fad733' :
+                                              index%6 == 4 ? '#111' :
+                                              index%6 == 5 ? '#7266ba' : '#27c24c'}" :id="index">{{item.year}}</h2>
+        </li>
+        <div class="tl-body" v-for="(item1,index1) in item.list" :key="index1">
           <li class="tl-item">
             <div class="tl-wrap" :style="{borderColor:index%6 == 1 ? '#333' : 
                                                         index%6 == 2 ? '#fad733' :
@@ -30,14 +32,19 @@
               </h3>
             </div>
           </li>
-      </div>
-    </ul>
-    <div class="tl-start">开始</div>
+        </div>
+      </ul>
+      <div class="tl-start">开始</div>
+    </div>
   </div>
 </template>
 <script>
+import Infoleft from './Infoleft'
 import axios from '@/api/api'
   export default {
+    components:{
+      Infoleft
+    },
     data(){
       return{
         data:[],
@@ -97,10 +104,20 @@ import axios from '@/api/api'
 </script>
 <style scoped>
 .timeline{
-  padding: 0 20%;
-  margin-top: 100px;
+  margin: 60px auto 0 auto;
   position: relative;
   z-index: 998;
+  display: flex;
+  justify-content: center;
+  max-width: 1200px;
+  width: 100%;
+  padding-top: 20px;
+}
+.timelineInfo{
+  background: #fff;
+  width: 75%;
+  border-radius: 20px;
+  padding: 20px;
 }
 .timeline-content{
   padding: 0;
