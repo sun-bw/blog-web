@@ -42,7 +42,7 @@ export default {
     cursor: url('../static/img/7de5437.png'), auto;
   }
   .el-main{
-    padding: 0px;
+    padding: 0px !important;
   }
   .app-main{
     min-height: 100vh;

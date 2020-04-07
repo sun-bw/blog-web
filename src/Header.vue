@@ -201,6 +201,6 @@ export default {
     padding: 0 20%;
 }
 .el-menu.el-menu--horizontal{
-    border-bottom:0px
+    border-bottom:0px !important;
 }
 </style>
