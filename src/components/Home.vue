@@ -24,11 +24,11 @@
       }
     },
     mounted(){
-
+      this.findIp();
     },
     methods:{
-      haha(){
-        axios.post('/api/haha',{}).then(res => {
+      findIp(){
+        axios.post('/Ip/findIp',{}).then(res => {
           console.log(res)
         })
       }
