@@ -29,7 +29,7 @@ export default {
 }
 </script>
 <style scoped>
-.infoleft{
+.infoleft{ 
     width:25%;
     padding-right:20px
 }
