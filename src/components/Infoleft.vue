@@ -29,6 +29,11 @@ export default {
 }
 </script>
 <style scoped>
+@media screen and (max-width:800px){
+    .infoleft{
+        display: none
+    }
+}
 .infoleft{ 
     width:25%;
     padding-right:20px
