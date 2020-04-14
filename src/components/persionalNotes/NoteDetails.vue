@@ -1,6 +1,12 @@
 <template>
     <div class="personNote">
-        <editor ref="editor" class="editor"></editor>
+        <div class="content">
+            <div class="title">{{title}}</div>
+            <div class="title-content">
+                <div class="time">{{time}}</div>
+            </div>
+        </div>
+        <editor ref="editor" class="editor" id="editor"></editor>
     </div>
 </template>
 <script>
@@ -12,7 +18,9 @@ export default {
     },
     data(){
         return{
-            data:''
+            data:'',
+            title:'',
+            time:'',
         }
     },
     mounted(){
@@ -25,8 +33,11 @@ export default {
             axios.post('/article/selectArticle',{
                 id:this.$route.query.id
             }).then(res => {
+                console.log(res)
                 this.data = res.data.content;
                 this.$refs.editor.editorString = res.data.content;
+                this.title = res.data.title;
+                this.time = res.data.createTime;
                 // this.$refs.editor.editorString = res.data.content;
                 // this.article.title = res.data.title;
                 // this.article.introduction = res.data.introduction;
@@ -39,12 +50,22 @@ export default {
 <style scoped>
 .personNote{
     margin:80px auto 0px auto;
-    display: flex;
+    /* display: flex; */
     /* box-shadow: 10px 10px 5px #c0c4cc; */
     margin-bottom: 30px;
-    }
-.editor{
-    box-shadow: 3px 0px 10px 10px #c0c4cc;
+}
+.content{
+    background: #ffffff;
+    color: #333;
+    text-align: center;
+    padding: 20px 0;
+    font-weight: bold;
+}
+.title{
+    font-size: 25px;
+}
+.title-content{
+    padding-top: 10px;
 }
      /*媒体查询，修改文章div的内容宽度*/
 @media screen and (max-width: 13660px){
@@ -103,5 +124,10 @@ export default {
     .editor{
         width: 100%;
     }
+}
+</style>
+<style>
+#editor .v-note-wrapper{
+    z-index: 1 !important;
 }
 </style>
