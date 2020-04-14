@@ -29,12 +29,22 @@
         </div>
         <!-- 屏幕小于800的菜单导航栏 -->
         <div id="nav-mobile">
-            <div style="padding-top:60px;font-size:25px">
-                <router-link :to="{path:'/'}" style="color:#ffffff;">首页</router-link>
-                <router-link :to="{path:'/PersonalNotes'}" style="color:#ffffff">笔记本</router-link>
-                <router-link :to="{path:'/TimeLine'}" style="color:#ffffff">时间轴</router-link>
-                <router-link :to="{path:'/Talkanymore'}" style="color:#ffffff">闲言碎语</router-link>
-                <router-link :to="{path:'/AboutMe'}" style="color:#ffffff">关于我</router-link>
+            <div style="font-size:25px">
+                <div style="width:100%;transition:0.6s">
+                    <router-link :to="{path:'/'}" style="color:#ffffff;">首页</router-link>
+                </div>
+                <div style="width:100%;transition:0.6s">
+                    <router-link :to="{path:'/PersonalNotes'}" style="color:#ffffff">笔记本</router-link>
+                </div>
+                <div style="width:100%;transition:0.6s">
+                    <router-link :to="{path:'/TimeLine'}" style="color:#ffffff">时间轴</router-link>
+                </div>
+                <div style="width:100%;transition:0.6s">
+                    <router-link :to="{path:'/Talkanymore'}" style="color:#ffffff">闲言碎语</router-link>
+                </div>
+                <div style="width:100%;transition:0.6s">
+                    <router-link :to="{path:'/AboutMe'}" style="color:#ffffff">关于我</router-link>
+                </div>
             </div>
         </div>
     </div>
@@ -112,12 +122,12 @@ export default {
         // 页面宽度小于800px，打开菜单方法
         openNav(){
             this.mobileNavStatus = false;
-            document.getElementById('nav-mobile').style.display = 'block'
+            document.getElementById('nav-mobile').style.width = '50%'
         },
         // 页面宽度小于800px，关闭菜单方法
         closeNav(){
             this.mobileNavStatus = true;
-            document.getElementById('nav-mobile').style.display = 'none'
+            document.getElementById('nav-mobile').style.width = '0px'
         },
     },
 }
@@ -154,22 +164,23 @@ export default {
 }
 #nav-mobile{
     position: fixed;
-    width: 100vw;
-    height: 100vh;
+    width: 0vw;
+    height: 23vh;
     overflow-y: auto;
     /* -webkit-overflow-scrolling: touch; */
-    top: 0;
-    left: 0;
+    top: 60px;
+    left: 5px;
     background: rgba(0,0,0,.92);
-    z-index: 999;
+    z-index: 2;
     display: flex;
-    display: none;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
     flex-direction: column;
-    padding: 0 1rem;
+    /* padding: 0 1rem; */
     padding-bottom: 8rem;
+    transition:width .6s;
+    /* opacity：0 */
 }
 @media screen and (min-width: 800px) and (max-width: 1920px) {
     #phone-menu-content{
