@@ -24,14 +24,10 @@
       }
     },
     mounted(){
-      this.findIp();
+      
     },
     methods:{
-      findIp(){
-        axios.post('/Ip/findIp',{}).then(res => {
-          console.log(res)
-        })
-      }
+      
     },
   }
 </script>

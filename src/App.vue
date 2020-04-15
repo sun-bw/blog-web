@@ -18,6 +18,7 @@
 <script>
 import blogHeader from './Header'
 import blogFooter from './Footer'
+import axios from './api/api'
 export default {
   name: 'App',
   components:{
@@ -29,8 +30,15 @@ export default {
 
     }
   },
+  mounted(){
+    this.findIp();
+  },
   methods:{
-    
+    findIp(){
+        axios.post('/Ip/findIp',{}).then(res => {
+          console.log(res)
+        })
+      }
   },
 
 }
