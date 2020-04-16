@@ -9,8 +9,9 @@
             <div class="line"></div>
             <div class="info">
               <div><i class="el-icon-user">墨染</i></div>
-              <div class="info-content"><i class="el-icon-collection"></i>{{item.categoryName}}</div>
-              <div class="info-content"><i class="el-icon-date"></i>{{item.createTime}}</div>
+              <div class="info-content"><i class="el-icon-collection articleImg"></i>{{item.categoryName}}</div>
+              <div class="info-content"><i class="el-icon-date articleImg"></i>{{item.createTime}}</div>
+              <div class="info-content"><i class="el-icon-view articleImg"></i>{{item.articleBrowseNum}}</div>
             </div>
           </div>
         </div>
@@ -224,5 +225,8 @@
     .article{
       width: 100%
     }
+  }
+  .articleImg{
+    padding-right: 5px;
   }
 </style>
