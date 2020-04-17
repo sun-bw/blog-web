@@ -27,9 +27,27 @@
                 <i class="el-icon-close nav-picture" @click="closeNav" v-else></i>
             </div>
         </div>
+        <div class="maskrub" id="mask"></div>
         <!-- 屏幕小于800的菜单导航栏 -->
         <div id="nav-mobile">
-            <div style="font-size:25px">
+            <ul class="mobile_item">
+                <li>
+                    <router-link :to="{path:'/'}" style="color:#ffffff;">首页</router-link>
+                </li>
+                <li>
+                    <router-link :to="{path:'/PersonalNotes'}" style="color:#ffffff">笔记本</router-link>
+                </li>
+                <li>
+                    <router-link :to="{path:'/TimeLine'}" style="color:#ffffff">时间轴</router-link>
+                </li>
+                <li>
+                    <router-link :to="{path:'/Talkanymore'}" style="color:#ffffff">闲言碎语</router-link>
+                </li>
+                <li>
+                    <router-link :to="{path:'/AboutMe'}" style="color:#ffffff">关于我</router-link>
+                </li>
+            </ul>
+            <!-- <div style="font-size:25px">
                 <div style="width:100%;transition:0.6s">
                     <router-link :to="{path:'/'}" style="color:#ffffff;">首页</router-link>
                 </div>
@@ -45,7 +63,7 @@
                 <div style="width:100%;transition:0.6s">
                     <router-link :to="{path:'/AboutMe'}" style="color:#ffffff">关于我</router-link>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </template>
@@ -123,11 +141,13 @@ export default {
         openNav(){
             this.mobileNavStatus = false;
             document.getElementById('nav-mobile').style.width = '50%'
+            document.getElementById('mask').style.display = 'block'
         },
         // 页面宽度小于800px，关闭菜单方法
         closeNav(){
             this.mobileNavStatus = true;
             document.getElementById('nav-mobile').style.width = '0px'
+            document.getElementById('mask').style.display = 'none'
         },
     },
 }
@@ -165,22 +185,32 @@ export default {
 #nav-mobile{
     position: fixed;
     width: 0vw;
-    height: 23vh;
+    height: auto;
     overflow-y: auto;
     /* -webkit-overflow-scrolling: touch; */
     top: 60px;
     left: 5px;
     background: rgba(0,0,0,.92);
-    z-index: 2;
+    z-index: 999;
     display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
     flex-direction: column;
     /* padding: 0 1rem; */
-    padding-bottom: 8rem;
+    /* padding-bottom: 8rem; */
     transition:width .6s;
     /* opacity：0 */
+}
+.maskrub{
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,.2);
+    display: none;
+    z-index: 998;
 }
 @media screen and (min-width: 800px) and (max-width: 1920px) {
     #phone-menu-content{
@@ -201,6 +231,13 @@ export default {
     }
     .blog-name{
         left: 85%;
+    }
+    li{
+        width: 100%;
+        height: 60px;
+    }
+    .maskrub{
+        transition: .1s;
     }
 }
 </style>

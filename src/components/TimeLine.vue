@@ -106,7 +106,7 @@ import axios from '@/api/api'
 .timeline{
   margin: 60px auto 0 auto;
   position: relative;
-  z-index: 998;
+  z-index: 997;
   display: flex;
   justify-content: center;
   max-width: 1200px;

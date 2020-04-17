@@ -86,7 +86,7 @@ export default {
   width: 75%;
   /* height: calc(100vh - 200px); */
   /* overflow-y: auto; */
-  z-index: 998;
+  z-index: 997;
   position: relative;
 }
 .personInfo{

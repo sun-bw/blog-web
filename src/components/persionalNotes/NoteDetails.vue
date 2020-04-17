@@ -3,7 +3,8 @@
         <div class="content">
             <div class="title">{{title}}</div>
             <div class="title-content">
-                <div class="time">{{time}}</div>
+                <div class="time"> <i class="el-icon-date detailsImg"></i>{{time}}</div>
+                <div class="browse"><i class="el-icon-view detailsImg"></i>{{articleBrowseNum}}</div>
             </div>
         </div>
         <editor ref="editor" class="editor" id="editor"></editor>
@@ -21,6 +22,7 @@ export default {
             data:'',
             title:'',
             time:'',
+            articleBrowseNum:'',
         }
     },
     mounted(){
@@ -38,6 +40,7 @@ export default {
                 this.$refs.editor.editorString = res.data.content;
                 this.title = res.data.title;
                 this.time = res.data.createTime;
+                this.articleBrowseNum = res.data.articleBrowseNum;
                 // this.$refs.editor.editorString = res.data.content;
                 // this.article.title = res.data.title;
                 // this.article.introduction = res.data.introduction;
@@ -66,6 +69,17 @@ export default {
 }
 .title-content{
     padding-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+.detailsImg{
+    padding-right: 5px;
+}
+.time{
+    padding-right: 10px;
+}
+.browse{
+    padding-left: 10px;
 }
      /*媒体查询，修改文章div的内容宽度*/
 @media screen and (max-width: 13660px){

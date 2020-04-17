@@ -98,7 +98,7 @@
     justify-content: center;
     width: 1280px;
     position: relative;
-    z-index: 998;
+    z-index: 997;
   }
   /*媒体查询，修改文章div的内容宽度*/
   @media screen and (max-width: 1366px){
@@ -132,7 +132,7 @@
     -webkit-line-clamp:3;
     margin:10px 0
   }
-  .article .line{
+  .article .line{ 
     border-bottom:1px solid #98a6ad
   }
   .article .info{
