@@ -29,7 +29,9 @@
         </div>
         <div class="maskrub" id="mask"></div>
         <!-- 屏幕小于800的菜单导航栏 -->
+       
         <div id="nav-mobile">
+            <div class="triangle" id="triangle"></div>
             <ul class="mobile_item">
                 <li>
                     <router-link :to="{path:'/'}" style="color:#ffffff;">首页</router-link>
@@ -47,23 +49,6 @@
                     <router-link :to="{path:'/AboutMe'}" style="color:#ffffff">关于我</router-link>
                 </li>
             </ul>
-            <!-- <div style="font-size:25px">
-                <div style="width:100%;transition:0.6s">
-                    <router-link :to="{path:'/'}" style="color:#ffffff;">首页</router-link>
-                </div>
-                <div style="width:100%;transition:0.6s">
-                    <router-link :to="{path:'/PersonalNotes'}" style="color:#ffffff">笔记本</router-link>
-                </div>
-                <div style="width:100%;transition:0.6s">
-                    <router-link :to="{path:'/TimeLine'}" style="color:#ffffff">时间轴</router-link>
-                </div>
-                <div style="width:100%;transition:0.6s">
-                    <router-link :to="{path:'/Talkanymore'}" style="color:#ffffff">闲言碎语</router-link>
-                </div>
-                <div style="width:100%;transition:0.6s">
-                    <router-link :to="{path:'/AboutMe'}" style="color:#ffffff">关于我</router-link>
-                </div>
-            </div> -->
         </div>
     </div>
 </template>
@@ -142,12 +127,14 @@ export default {
             this.mobileNavStatus = false;
             document.getElementById('nav-mobile').style.width = '50%'
             document.getElementById('mask').style.display = 'block'
+            document.getElementById('triangle').style.display = 'block'
         },
         // 页面宽度小于800px，关闭菜单方法
         closeNav(){
             this.mobileNavStatus = true;
             document.getElementById('nav-mobile').style.width = '0px'
             document.getElementById('mask').style.display = 'none'
+            document.getElementById('triangle').style.display = 'none'
         },
     },
 }
@@ -182,13 +169,26 @@ export default {
     top: 40%;
     z-index: 999;
 }
+.triangle{
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 20px solid rgba(0,0,0,.92);
+    position: fixed;
+    top: 60px;
+    left: 15px;
+    display: none;
+    transition:border-left .6s;
+    transition:border-right .6s;
+}
 #nav-mobile{
     position: fixed;
     width: 0vw;
     height: auto;
     overflow-y: auto;
     /* -webkit-overflow-scrolling: touch; */
-    top: 60px;
+    top: 80px;
     left: 5px;
     background: rgba(0,0,0,.92);
     z-index: 999;
@@ -201,6 +201,7 @@ export default {
     /* padding-bottom: 8rem; */
     transition:width .6s;
     /* opacity：0 */
+    border-radius: 10px;
 }
 .maskrub{
     width: 100%;
