@@ -66,7 +66,7 @@ export default new Router({
       router:true
     },
     {
-      path:'/NoteDetails',
+      path:'/NoteDetails/:id',
       name:'NoteDetails',
       component:NoteDetails,
       router:true

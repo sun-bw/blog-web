@@ -83,9 +83,13 @@
 
       // 查看文章详情
       articleDetails(id){
+        // this.$router.push({
+        //   path:'/NoteDetails',
+        //   query:{id:id}
+        // });
         this.$router.push({
-          path:'/NoteDetails',
-          query:{id:id}
+          name:'NoteDetails',
+          params:{id:id}
         });
       }
     }
