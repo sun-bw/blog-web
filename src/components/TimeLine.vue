@@ -6,7 +6,7 @@
         <li class="tl-header" >
           <h2 class="btn" :style="{background:index%6 == 1 ? '#333' : 
                                               index%6 == 2 ? '#fad733' :
-                                              index%6 == 3 ? '#fad733' :
+                                              index%6 == 3 ? '#f05050' :
                                               index%6 == 4 ? '#111' :
                                               index%6 == 5 ? '#7266ba' : '#27c24c'}" :id="index">{{item.year}}</h2>
         </li>
@@ -14,18 +14,18 @@
           <li class="tl-item">
             <div class="tl-wrap" :style="{borderColor:index%6 == 1 ? '#333' : 
                                                         index%6 == 2 ? '#fad733' :
-                                                        index%6 == 3 ? '#fad733' :
+                                                        index%6 == 3 ? '#f05050' :
                                                         index%6 == 4 ? '#111' :
                                                         index%6 == 5 ? '#7266ba' : '#27c24c'}">
               <span class="tl-date">{{item1.date}}</span>
               <div class="triangle" :style="{borderRight:index%6 == 1 ? '10px solid #333' : 
                                                         index%6 == 2 ? '10px solid #fad733' :
-                                                        index%6 == 3 ? '10px solid #fad733' :
+                                                        index%6 == 3 ? '10px solid #f05050' :
                                                         index%6 == 4 ? '10px solid #111' :
                                                         index%6 == 5 ? '10px solid #7266ba' : '10px solid #27c24c'}"></div>
               <h3 class="tl-content" :style="{background:index%6 == 1 ? '#333' : 
                                                         index%6 == 2 ? '#fad733' :
-                                                        index%6 == 3 ? '#fad733' :
+                                                        index%6 == 3 ? '#f05050' :
                                                         index%6 == 4 ? '#111' :
                                                         index%6 == 5 ? '#7266ba' : '#27c24c'}">
                 <span class="arrow arrow-info">{{item1.content}}</span>
