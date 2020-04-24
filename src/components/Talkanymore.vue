@@ -2,15 +2,15 @@
     <div class="talkAnymore">
         <Infoleft></Infoleft>
         <div class="talk-content">
-            <div v-for="(item,index) of data" :key="index" style="border-bottom:1px solid #98a6ad;width:100%">
+            <div v-for="(item,index) of data" :key="index" class="talk-item">
                 <div class="content">{{item.sayContent}}</div>
-                <img src="../../static/img/2.jpg" style="width:100%">
-                <div style="display:flex">
-                    <div style="flex-grow: 1;">{{item.createTime}}</div>
-                    <div style="flex-grow: 1;">
-                        <img src="../../static/img/like.png">
+                <img :src="item.imageUrl" class="talk-img">
+                <div class="operating">
+                    <div class="operating-content operating-item">{{item.createTime}}</div>
+                    <div class="operating-content operating-item" @click="likeClick(item.id)">
+                        <img src="../../static/img/like.png" style="width:16px">
                     </div>
-                    <div style="flex-grow: 1;">
+                    <div class="operating-content" @click="likeClick(item.id)">
                         <i class="el-icon-chat-dot-square"></i>
                     </div>
                 </div>
@@ -40,6 +40,14 @@ export default {
                 console.log(res)
                 this.data = res.data
             })
+        },
+
+        // 点赞
+        likeClick(){
+            this.$message({
+                type:'warning',
+                message:'我还没写接口！'
+            })
         }
     }
 }
@@ -66,5 +74,24 @@ export default {
     line-height: 25px;
     letter-spacing: 1px;
     text-align: right;
+}
+.talk-item{
+    /* border-bottom:1px solid #98a6ad; */
+    width:100%;
+    margin-bottom:20px
+}
+.talk-img{
+    width: 100%;
+}
+.operating{
+    display:flex;
+    border: 1px solid #98a6ad;
+    text-align: center;
+}
+.operating-content{
+    flex-grow: 1;
+}
+.operating-item{
+    border-right:1px solid #98a6ad
 }
 </style>
