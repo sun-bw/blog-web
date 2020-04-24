@@ -15,6 +15,11 @@
             </div>
           </div>
         </div>
+         <!-- 分页 -->
+        <div style="text-align: right;padding-top: 20px;">
+          <el-pagination layout="prev,pager,next" :total='total' :page-size="pageSize"  :current-page='currentPage'
+          @current-change='handlerCurrentChange'></el-pagination>
+        </div>
       </div>
       <div>
         <!--搜索-->
@@ -47,6 +52,9 @@
         categoryData:[],
         title:'',
         categoryId:'',
+        currentPage:1,
+        pageSize:10,
+        total:0,
       }
     },
     mounted(){
@@ -55,17 +63,27 @@
     },
     methods:{
       findArticle(){
-        axios.post('/article/findAll',{
+        axios.post('/article/findPage',{
           title:this.title,
-          categoryId:this.categoryId
+          categoryId:this.categoryId,
+          pageSize:this.pageSize,
+          pageNum:this.currentPage,
         }).then(res => {
-          this.data = res.data;
+          this.data = res.data.content;
           // 查询后清空文章id
           this.categoryId = '';
           // 查询后重置滚动条
           document.documentElement.scrollTop = 0;
+          this.total = res.data.totalSize;
+          // this.pageSize = 
         })
       },
+      // 分页
+      handlerCurrentChange(val){
+        this.currentPage = val;
+        this.findArticle();
+      },
+
       // 查询分类
       findCategory(){
         axios.post('/category/findCategory',{}).then(res => {

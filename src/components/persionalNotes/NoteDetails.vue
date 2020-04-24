@@ -26,8 +26,6 @@ export default {
         }
     },
     mounted(){
-        console.log(11111111);
-        
         this.findNoteDetails();
     },
     methods:{
