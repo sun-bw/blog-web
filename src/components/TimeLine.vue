@@ -178,6 +178,7 @@ import axios from '@/api/api'
     width: 4.5em;
     margin-left: -7.5em;
     text-align: right;
+    animation: fadeInLeft 1s both;
 }
 /* 内容 */
 .tl-content{
@@ -191,7 +192,8 @@ import axios from '@/api/api'
     left: 10px;
     top:-10px;
     color: #fff;
-    border-radius: 5px 
+    border-radius: 5px ;
+    animation: fadeInRight 1s both;
 }
 .triangle{
   width: 0;
@@ -201,6 +203,7 @@ import axios from '@/api/api'
   border-bottom: 10px solid transparent;
   position: relative;
   top: 40px;
+  animation: fadeInRight 1s both;
 }
 .tl-start{
   border-radius: 10px;
@@ -211,5 +214,54 @@ import axios from '@/api/api'
   line-height: 30px;
   position: relative;
   left: 63px;
+}
+@-webkit-keyframes fadeInRight {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(100%,0,0);
+        transform: translate3d(100%,0,0)
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0)
+    }
+}
+
+@keyframes fadeInRight {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(100%,0,0);
+        transform: translate3d(100%,0,0)
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0)
+    }
+}
+
+.fadeInRight {
+    -webkit-animation-name: fadeInRight;
+    animation-name: fadeInRight
+}
+.fadeInLeft{
+    -webkit-animation-name: fadeInLeft;
+    animation-name: fadeInLeft
+}
+@keyframes fadeInLeft{
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(-100%,0,0);
+        transform: translate3d(-100%,0,0)
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0)
+    }
 }
 </style>

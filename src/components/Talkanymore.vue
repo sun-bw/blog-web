@@ -2,7 +2,7 @@
     <div class="talkAnymore">
         <Infoleft></Infoleft>
         <div class="talk-content">
-            <div v-for="(item,index) of data" :key="index" class="talk-item">
+            <!-- <div v-for="(item,index) of data" :key="index" class="talk-item">
                 <div class="content">{{item.sayContent}}</div>
                 <img :src="item.imageUrl" class="talk-img">
                 <div class="operating">
@@ -14,7 +14,8 @@
                         <i class="el-icon-chat-dot-square"></i>
                     </div>
                 </div>
-            </div>
+            </div> -->
+            <div>😜，我还没想好怎么写!</div>
         </div>
     </div>
 </template>
