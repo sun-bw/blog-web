@@ -140,6 +140,7 @@
     height: 160px;
     border-radius: 15px;
     position: relative;
+    animation: zoomIn 1s both;
   }
   .article .title{
     font-size: 20px;
@@ -251,4 +252,16 @@
   .articleImg{
     padding-right: 5px;
   }
-</style>
+  
+  @keyframes zoomIn
+  {
+    0% {
+        opacity: 0;
+        -webkit-transform: scale3d(.3,.3,.3);
+        transform: scale3d(.3,.3,.3)
+    }
+    50% {
+        opacity: 1
+    }
+  }
+</style> 
