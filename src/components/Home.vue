@@ -17,13 +17,15 @@
     </div>
     <!-- 热门文章 -->
     <div class="section2" ref="section2">
-      <div style="text-align:center">
+      <div class="hotArticle" id="hotArticle">
         <div>
-          <h1 style="font-size: 32px;padding-bottom: 30px;font-weight: 500;">热门文章</h1>
-          <p>12312312</p>
+          <h1>热门文章</h1>
+        </div>
+        <div style="display:flex">
+          <p style="margin:auto;max-width:655px">想告诉你，这世间美好仍有许多；朝晨簇新的阳光，微风吹起的素衣一角，春天新生的泥土，冬天温暖的被窝，深巷青瓦梅花，庭前如盖琵琶。蓄着故事的篝火，写满月亮的诗词，女孩儿脸颊的绯红，少年嘴角的梨涡，还有我</p>
         </div>
       </div>
-      <div class="article">
+      <div class="article" id="article">
         <div v-for="item in data" :key="item.id" class="content" @click="articleDetails(item.id)">
           <div class="title">{{item.title}}</div>
           <div class="article-content">{{item.content}}</div>
@@ -44,24 +46,56 @@
     data(){
       return{
         data:[],
+        a:document.documentElement.scrollTop
       }
     },
+    computed:{},
+    watch:{},
     mounted(){
       this.selectBrowseMax();
+       //监听滚动条
+        window.addEventListener('scroll',this.handleScroll,true)
+    },
+    // 销毁监听滚动条
+    destroyed(){
+        window.removeEventListener('scroll', this.handleScroll,true);
     },
     methods:{
-      // 平滑滚动
+      // 平滑滚动,到页面section2的位置
       scrollToDown(){
           this.$refs.section2.scrollIntoView({behavior: "smooth"})
+          this.selectBrowseMax();
       },
 
       // 查询访问量最多的三条文章
       selectBrowseMax(){
         axios.post('/article/selectBrowseMax','').then(res => {
-          console.log(res)
           this.data = res.data
         })
-      }
+      },
+
+      handleScroll(){
+        // 卷去的高度+可是区域>当前元素距离顶部的距离，代表元素在可是区域内
+        // 当前元素距离顶部的距离
+        var articleTop = document.getElementById('article').offsetTop;
+        // 可视区域
+        var windowHeight = window.innerHeight;
+        // 卷去的高度
+        var scrollHeight = document.documentElement.scrollTop;
+        // 判断文章内容
+        if(windowHeight + scrollHeight > articleTop){
+          document.getElementById('article').style.display = 'block'
+        }else{
+          document.getElementById('article').style.display = 'none'
+        }
+        // 热门文章
+        var hotArticleTop = document.getElementById('hotArticle').offsetTop;
+        if(windowHeight + scrollHeight > hotArticleTop){
+          document.getElementById('hotArticle').style.display = 'block'
+        }else{
+          document.getElementById('hotArticle').style.display = 'none'
+        }
+      },
     },
   }
 </script>
@@ -109,7 +143,7 @@
   }
   .section2{
     padding: 100px 0;
-    height: 100vh;
+    min-height: 100vh;
   }
   .section2 h1::after{
     position: absolute;
@@ -118,8 +152,22 @@
     content: "";
     left: 50%;
     margin-left: -25px;
-    bottom: -190px;
+    /* bottom: 45px; */
+    top:70px;
     background: #00c2ff;
+  }
+  .section2 .hotArticle{
+    /* animation:fadeInDown 1s both; */
+    animation-delay: 0.2s;
+    animation-name:fadeInDown;
+    animation-fill-mode: both;
+    animation-duration: 1s;
+    text-align:center
+  }
+  .section2 h1{
+    font-size: 32px;
+    padding-bottom: 30px;
+    font-weight: 500;
   }
   .section2 .article{
     margin: auto;
@@ -134,7 +182,34 @@
     height: 160px;
     border-radius: 15px;
     position: relative;
-    animation: zoomIn 1s both;
+    animation: fadeInUp 1s both;
+    /* animation-fill-mode: both;
+    animation-duration: 1s; */
+    visibility: visible
+  }
+  @keyframes fadeInUp
+  {
+    0% {
+        opacity: 0;
+        -webkit-transform: scale3d(.3,.3,.3);
+        transform: scale3d(.3,.3,.3)
+    }
+    50% {
+        opacity: 1
+    }
+  }
+  @keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0,-100%,0);
+        transform: translate3d(0,-100%,0)
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0)
+    }
   }
   .article-content{
     color:#98a6ad;
