@@ -45,7 +45,6 @@ export default {
         // 查询各项信息
         findStatistics(){
             axios.post('/statistics/findStatistics','').then(res => {
-                console.log(res)
                 this.data = res.data
             })
         }

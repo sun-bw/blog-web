@@ -36,7 +36,7 @@ export default {
   methods:{
     findIp(){
         axios.post('/Ip/findIp',{}).then(res => {
-          console.log(res)
+          // console.log(res)
         })
       }
   },

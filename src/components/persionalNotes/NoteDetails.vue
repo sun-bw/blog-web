@@ -33,7 +33,6 @@ export default {
             axios.post('/article/selectArticle',{
                 id:this.$route.params.id
             }).then(res => {
-                console.log(res)
                 this.data = res.data.content;
                 this.$refs.editor.editorString = res.data.content;
                 this.title = res.data.title;

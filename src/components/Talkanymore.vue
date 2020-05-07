@@ -38,7 +38,6 @@ export default {
         // 查询
         findTalk(){
             axios.post("/say/findSayContent","").then(res => {
-                console.log(res)
                 this.data = res.data
             })
         },

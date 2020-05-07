@@ -79,7 +79,6 @@ import axios from '@/api/api'
               var ai = res.data[i]
               // !map[ai.year] 在map存在ai.year的值时，判断为false
               if(!map[ai.year]){
-                  console.log(map[ai.year])
                   list.push({
                       // id:ai.id,
                       year:ai.year,
