@@ -93,10 +93,10 @@ export default {
             this.setActiveIndex(window.location.pathname)
         }
     },
-    methods:{
+    methods:{  
         //用于解决当前路由位置问题，刷新页面路由重置问题
         setActiveIndex(path){
-            //截取路由上的/
+            //截取路由上的/ 
             let pathArr = path.split('/');
             if(pathArr.length > 3){
                 this.activeIndex = `/${pathArr[1]}/${pathArr[2]}`;
@@ -213,7 +213,7 @@ export default {
     display: none;
     z-index: 998;
 }
-@media screen and (min-width: 800px) and (max-width: 1920px) {
+@media screen and (min-width: 800px) and (max-width: 9999px) {
     #phone-menu-content{
         display: none;
     }
