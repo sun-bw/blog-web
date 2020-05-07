@@ -34,6 +34,7 @@
             <div class="line"></div>
             <div class="info">
               <div class="info-content"><i class="el-icon-date articleImg"></i>{{item.createTime}}</div>
+              <div @click="readMore(item.id)" class="readMore">阅读更多</div>
             </div>
           </div>
         </div>
@@ -45,10 +46,10 @@
       <div class="content">
         <ul id="section3Item">
           <li class="fadeInLeft">
-            <a>时间轴</a>
+            <router-link :to="{path:'/TimeLine'}">时间轴</router-link>
           </li>
           <li class="fadeInRight">
-            <a>关于我</a>
+            <router-link :to="{path:'/AboutMe'}">关于我</router-link>
           </li>
         </ul>
       </div>
@@ -119,6 +120,14 @@
           document.getElementById('section3Item').style.display = 'none'
         }
       },
+
+      // 阅读更多
+      readMore(id){
+        this.$router.push({
+          name:'NoteDetails',
+          params:{id:id}
+        });
+      }
     },
   }
 </script>
@@ -165,7 +174,7 @@
     color:#FFFFFF;
   }
   .section2{
-    padding: 100px 0 0;
+    padding: 80px 0 0;
     min-height: 100vh;
   }
   .section2 h1::after{
@@ -261,9 +270,10 @@
     padding-top:10px;
     /* position: absolute;
     bottom: 10px; */
+    justify-content: space-between;
   }
-  .section2 .info-content{
-    margin-left: 20px;
+  .section2 .readMore{
+    color: #29b6f6;
   }
 
   .section3{
