@@ -98,8 +98,9 @@ export default {
         if(ua.indexOf('qq') > -1){
           return 'ios qq';
         }
+      }else{
+        return '其他';
       }
-      return '其他';
     }
   }
 }
