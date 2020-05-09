@@ -6,7 +6,7 @@
                     <img src="../../static/img/avatar.jpg" class="avatar">
                 </div>
                 <div class="aboutMe">
-                    <p class="name">墨染</p>
+                    <p class="name">墨染111</p>
                     <p class="address">辽宁|大连</p>
                 </div>
             </div>
