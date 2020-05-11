@@ -51,7 +51,7 @@ export default {
     }
 }
 </script>
-<style scoped>
+<style lang="less" scoped>
 @media screen and (max-width:800px){
     .infoleft{
         display: none
@@ -81,40 +81,41 @@ export default {
 }
 .aboutMe{
     text-align: center;
-}
-.aboutMe .name{
-    font-size: 16px;
-    padding-bottom: 4px;
-}
-.aboutMe .address{
-    font-size: 12px;
+    .name{
+        font-size: 16px;
+        padding-bottom: 4px;
+    }
+    .address{
+        font-size: 12px;
+    }
 }
 .statistics{
     background:#fff;
     padding: 20px;
     border-radius: 20px;
     font-size: 16px;
-}
-.statistics-content{
-    padding: 10px 0;
-    border-bottom: 1px solid #eee;
+    .statistics-content{
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
+        .statisticsImg{
+            color: #0080ff;
+        }
+    }
+    .item{
+        padding: 20px 0;
+        .item-content{
+            padding-top: 10px;
+        }
+        .item-number{
+            float: right;
+        }
+    }
 }
 .picture{
     font-size: 16px;
     padding-right: 10px;
 }
-.item{
-    padding: 20px 0;
-}
-.item-content{
-    padding-top: 10px;
-}
-.item-number{
-    float: right;
-}
-.statisticsImg{
-    color: #0080ff;
-}
+
 .articleImg{
     color: #ff8000;
 }
