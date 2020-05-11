@@ -177,9 +177,14 @@
     }
   }
 
-  .section2{
+  .testExtend{
     padding: 80px 0 0;
     min-height: 100vh;
+  }
+  .section2{
+    // padding: 80px 0 0;
+    // min-height: 100vh;
+    &:extend(.testExtend);
     h1{
       font-size: 32px;
       padding-bottom: 30px;
