@@ -2,7 +2,12 @@
 const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
-const vueLoaderConfig = require('./vue-loader.conf')
+// const vueLoaderConfig = require('./vue-loader.conf')
+// const {VueLoaderPlugin} = require('vue-loader')
+// const { VueLoaderPlugin } = require('vue-loader')
+const { VueLoaderPlugin } = require('vue-loader')
+require('./check-versions')()//检验插件版本是否对应
+const ProgressBarPlugin  = require('progress-bar-webpack-plugin')
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -15,6 +20,12 @@ module.exports = {
   entry: {
     app: './src/main.js'
   },
+  plugins: [
+    // make sure to include the plugin for the magic
+    new VueLoaderPlugin(),
+    new ProgressBarPlugin()
+  ],
+  mode:process.env.NODE_ENV,
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',
@@ -34,7 +45,7 @@ module.exports = {
       {
         test: /\.vue$/,
         loader: 'vue-loader',
-        options: vueLoaderConfig
+        // options: vueLoaderConfig
       },
       {
         test: /\.js$/,
@@ -65,7 +76,7 @@ module.exports = {
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
       }
-    ]
+    ],
   },
   node: {
     // prevent webpack from injecting useless setImmediate polyfill because Vue

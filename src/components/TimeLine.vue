@@ -101,6 +101,10 @@ import axios from '@/api/api'
     }
   }
 </script>
+<style lang="less">
+
+</style>
+
 <style scoped>
 .timeline{
   margin: 60px auto 0 auto;
