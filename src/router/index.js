@@ -39,6 +39,12 @@ const Talkanymore = (resolve => {
   })
 })
 
+const WebsiteLinks = (resolve) => {
+  import('@/components/WebSiteLinks').then(module => {
+    resolve(module)
+  })
+}
+
 export default new Router({
   routes: [
     {
@@ -75,6 +81,12 @@ export default new Router({
       path:'/Talkanymore',
       name:'Talkanymore',
       component:Talkanymore,
+      router:true
+    },
+    {
+      path:'/WebsiteLinks',
+      name:'WebsiteLinks',
+      component:WebsiteLinks,
       router:true
     }
   ]

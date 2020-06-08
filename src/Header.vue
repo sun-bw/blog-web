@@ -15,8 +15,11 @@
                 <el-menu-item index="/TimeLine">
                     <span slot="title">时间轴</span>
                 </el-menu-item>
-                <el-menu-item index='/Talkanymore'>
+                <!-- <el-menu-item index='/Talkanymore'>
                     <span slot="title">闲言碎语</span>
+                </el-menu-item> -->
+                <el-menu-item index='/WebsiteLinks'>
+                    <span slot="title">友情链接</span>
                 </el-menu-item>
                 <el-menu-item index="/AboutMe">
                     <span slot="title">关于我</span>
@@ -42,8 +45,11 @@
                 <li>
                     <router-link :to="{path:'/TimeLine'}" style="color:#ffffff">时间轴</router-link>
                 </li>
-                <li>
+                <!-- <li>
                     <router-link :to="{path:'/Talkanymore'}" style="color:#ffffff">闲言碎语</router-link>
+                </li> -->
+                <li>
+                    <router-link :to="{path:'/WebsiteLinks'}" style="color:#ffffff">友情链接</router-link>
                 </li>
                 <li>
                     <router-link :to="{path:'/AboutMe'}" style="color:#ffffff">关于我</router-link>
