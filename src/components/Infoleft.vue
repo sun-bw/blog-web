@@ -26,6 +26,11 @@
                     访问总数：
                     <span class="item-number">{{data.interviewNum}}</span>
                 </div>
+                <div class="item-content">
+                    <i class="el-icon-phone-outline picture websiteLinke"></i>
+                    友链总数：
+                    <span class="item-number">{{data.websiteLinkNum}}</span>
+                </div>
             </div>
         </div>
     </div>
@@ -121,5 +126,8 @@ export default {
 }
 .interviewImg{
     color: #f00078;
+}
+.websiteLinke{
+    color: #8600ff;
 }
 </style>
