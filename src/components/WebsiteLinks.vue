@@ -11,13 +11,34 @@
                 </div>
             </div>
         </div>
-        <el-dialog title='友情连接' :visible.sync="dialogFlag" :append-to-body='true' @close='cancel' width='300px'>
-            <el-input v-model="websiteName" placeholder="网站名称"/>
-            <el-input v-model="websiteIntroduction" placeholder="网站简介"/>
-            <el-input v-model="websiteLink" placeholder="网站连接"/>
-            <el-input v-model="websiteLogo" placeholder="网站LOGO"/>
+        <el-dialog title='友情连接' :visible.sync="dialogFlag" :append-to-body='true' @close='cancel'>
+            <el-steps :active="active" simple finish-status="success">
+                <el-step title="步骤 1" icon="el-icon-edit"></el-step>
+                <el-step title="步骤 2" icon="el-icon-upload"></el-step>
+                <el-step title="步骤 3" icon="el-icon-picture"></el-step>
+            </el-steps>
+            <div v-if="active == 0">
+                <div class="websiteInfoClass">
+                    <div class="websiteInfoClass-cotent">请先确保添加本站</div>
+                    <div class="websiteInfoClass-cotent">网站名称：墨染</div>
+                    <div class="websiteInfoClass-cotent">网站简介：谦谦君子，温润如玉</div>
+                    <div class="websiteInfoClass-cotent">网站链接：http://www.wensoul.com/</div>
+                    <div class="websiteInfoClass-cotent">网站LOGO:http://www.wensoul.com/static/img/avatar.bea407a.jpg</div>
+                </div>
+            </div>
+            <div v-if="active == 1" class="contentClass">
+                <div class="contentInfoClass">
+                    <el-input v-model="websiteName" placeholder="网站名称"/>
+                    <el-input v-model="websiteIntroduction" placeholder="网站简介"/>
+                    <el-input v-model="websiteLink" placeholder="网站连接"/>
+                    <el-input v-model="websiteLogo" placeholder="网站LOGO"/>
+                </div>
+            </div>
+            <div v-if="active == 2">我会尽快审核的呀！</div>
             <div slot="footer" class="dialog-footer">
-                <el-button type="primary" @click="submit">确 定</el-button>
+                <el-button type="primary" @click="next" v-if="active == 0">下一步</el-button>
+                <el-button type="primary" @click="submit" v-if="active == 1">确 定</el-button>
+                <el-button type="primary" @click="cancel" v-if="active == 2">关闭</el-button>
             </div>
         </el-dialog>
     </div>
@@ -34,6 +55,7 @@ export default {
             websiteLink:'',
             websiteLogo:'',
             dialogFlag:false,
+            active: 0
         }
     },
     components:{
@@ -65,21 +87,33 @@ export default {
             this.websiteIntroduction = '';
             this.websiteLink = '';
             this.websiteLogo = '';
+            this.active = 0;
+        },
+
+        next(){
+            if (this.active++ > 2) this.active = 0;
         },
 
         submit(){
-            axios.post('/WebsiteLink/addWebsiteLink',{
-                websiteName:this.websiteName,
-                websiteLink:this.websiteLink,
-                websiteLogo:this.websiteLogo,
-                websiteIntroduction:this.websiteIntroduction,
-            }).then(res => {
+            if(this.websiteName == ''||this.websiteIntroduction == "" || this.websiteLink == ''){
                 this.$message({
-                    type:'success',
-                    message:'申请成功，我会尽快通过呀！'
-                });
-                this.cancel();
-            })
+                    type:'info',
+                    message:'请正确填写信息哦！'
+                })
+            }else{
+                axios.post('/WebsiteLink/addWebsiteLink',{
+                    websiteName:this.websiteName,
+                    websiteLink:this.websiteLink,
+                    websiteLogo:this.websiteLogo,
+                    websiteIntroduction:this.websiteIntroduction,
+                }).then(res => {
+                    // this.$message({
+                    //     type:'success',
+                    //     message:'申请成功，我会尽快通过呀！'
+                    // });
+                    this.active = 2;
+                })
+            }
         }
     }
 }
@@ -172,6 +206,22 @@ export default {
     .websiteContent{
         justify-content: center;
     }
+}
+
+.contentClass{
+    display: flex;
+    padding-top: 20px;
+}
+.contentInfoClass{
+    margin: auto;
+    width: 50%;
+}
+.websiteInfoClass{
+    font-size: 20px;
+    color: #333;
+}
+.websiteInfoClass-cotent{
+    margin-top: 10px;
 }
 </style>
 <style>

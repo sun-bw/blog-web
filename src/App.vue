@@ -19,6 +19,13 @@
 import blogHeader from './Header'
 import blogFooter from './Footer'
 import axios from './api/api'
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?34fcef9559280c8d89eb62936e1efd38";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
 export default {
   name: 'App',
   components:{
