@@ -31,6 +31,11 @@
                     友链总数：
                     <span class="item-number">{{data.websiteLinkNum}}</span>
                 </div>
+                <div class="item-content">
+                    <i class="el-icon-service picture websiteLinke"></i>
+                    数据统计:
+                    <span class="item-number"><a href="https://tongji.baidu.com/web/welcome/ico?s=34fcef9559280c8d89eb62936e1efd38">百度统计</a></span>
+                </div>
             </div>
         </div>
     </div>
