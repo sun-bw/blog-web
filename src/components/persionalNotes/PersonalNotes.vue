@@ -90,7 +90,9 @@
           // 在数组最前面加上
           // 第一个0代表数组的索引位置，第二个0代表删除元素的数量，后面带边新增的元素内容
           res.data.splice(0,0,{categoryId: 0,categoryName: "全部"})
-          this.categoryData = res.data;
+          // console.log(res.data.splice(res.data.findIndex(item => item.categoryId === 5),1))
+          let data = res.data.concat(res.data.splice(res.data.findIndex(item => item.categoryId === 5), 1))
+          this.categoryData = data;
         })
       },
       // 选择分类
