@@ -101,6 +101,10 @@ export default {
 .contentInfo{
   margin-left: 20px;
 }
+@font-face {
+  font-family: myFont;
+  src: url('../../static/font/font.ttf');
+}
 /*媒体查询*/
 @media screen and (max-width: 13660px){
     .personNote{
