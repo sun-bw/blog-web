@@ -11,8 +11,10 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 // const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
+const TerserWebpackPlugin = require('terser-webpack-plugin')
 
 const env = require('../config/prod.env')
+const { entry } = require('./webpack.base.conf')
 
 const webpackConfig = merge(baseWebpackConfig, {
   module: {
@@ -31,20 +33,38 @@ const webpackConfig = merge(baseWebpackConfig, {
   // 新的打包规则
   optimization: {
     splitChunks: {
-      cacheGroups: {
-        styles: {
-          name: 'styles',
-          test: /\.css$/,
-          chunks: 'all',
-          enforce: true
-        },
-        vendor:{
-          test: /node_modules/,
-          name: 'vendor',
-          chunks:'all'
-      }
-    }
-    }
+      chunks:'all',
+      //默认值不写
+      // cacheGroups: {
+      //   styles: {
+      //     name: 'styles',
+      //     test: /\.css$/,
+      //     chunks: 'all',
+      //     enforce: true
+      //   },
+      //   vendor:{
+      //     test: /node_modules/,
+      //     name: 'vendor',
+      //     chunks:'all'
+      //   }
+      // }
+    },
+    // 将当前模块的记录其他模块的hash单独打包为一个文件 runtime
+    // 解决：修改a文件导致b文件的contenthash变化
+    runtimeChunk: {
+      name: entrypoint => `runtime-${entrypoint.name}`
+    },
+    minimizer: [
+      //配置生产环境的压缩方案：js和css
+      new TerserWebpackPlugin({
+        //开启缓存
+        cache: true,
+        //开启多进程打包
+        parallel: true,
+        //启动sourcemap
+        sourceMap: true
+      })
+    ]
   },
   plugins: [
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
@@ -117,7 +137,7 @@ if (config.build.productionGzip) {
 
   webpackConfig.plugins.push(
     new CompressionWebpackPlugin({
-      asset: '[path].gz[query]',
+      filename: '[path].gz[query]',
       algorithm: 'gzip',
       test: new RegExp(
         '\\.(' +
