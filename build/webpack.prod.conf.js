@@ -144,8 +144,9 @@ if (config.build.productionGzip) {
         config.build.productionGzipExtensions.join('|') +
         ')$'
       ),
-      threshold: 10240,
-      minRatio: 0.8
+      threshold: 10240,//处理大于当前字节的文件
+      minRatio: 0.8,//只有压缩得更好的资产才能处理这个比率。默认为0.8。
+      deleteOriginalAssets:true,//是否删除原始资产？默认为false。
     })
   )
 }
