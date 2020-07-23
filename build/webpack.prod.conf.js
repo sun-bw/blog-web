@@ -36,6 +36,16 @@ const webpackConfig = merge(baseWebpackConfig, {
     splitChunks: {
       chunks:'all',
       cacheGroups: {
+        vue: {
+          name: 'vue',
+          test: /[\\/]node_modules[\\/]vue[\\/]/,
+          priority: -10
+        },
+        'vue-router': {
+          name: 'vue-router',
+          test: /[\\/]node_modules[\\/]vue-router[\\/]/,
+          priority: -10
+        },
         'element-ui': {
           name: 'element-ui',
           test: /[\\/]node_modules[\\/]element-ui[\\/]/,
