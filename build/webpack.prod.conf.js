@@ -31,9 +31,29 @@ const webpackConfig = merge(baseWebpackConfig, {
     chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
   },
   // 新的打包规则
+  //优化拆分了element和mavon打包之后的包。
   optimization: {
     splitChunks: {
       chunks:'all',
+      cacheGroups: {
+        'element-ui': {
+          name: 'element-ui',
+          test: /[\\/]node_modules[\\/]element-ui[\\/]/,
+          priority: -10
+        },
+        'mavon-editor':{
+          name: 'mavon-editor',
+          test: /[\\/]node_modules[\\/]mavon-editor[\\/]/,
+          priority: -10
+        },
+        vendors: {
+          name:'vendors',
+          test: /[\\/]node_modules[\\/]/,
+          // 优先级
+          priority: -20
+        },
+      }
+      
       //默认值不写
       // cacheGroups: {
       //   styles: {
@@ -146,7 +166,7 @@ if (config.build.productionGzip) {
       ),
       threshold: 10240,//处理大于当前字节的文件
       minRatio: 0.8,//只有压缩得更好的资产才能处理这个比率。默认为0.8。
-      deleteOriginalAssets:true,//是否删除原始资产？默认为false。
+      // deleteOriginalAssets:true,//是否删除原始资产？默认为false。
     })
   )
 }
