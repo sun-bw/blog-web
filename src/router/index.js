@@ -3,47 +3,18 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-const Home = (resolve => {
-  import('@/components/Home').then(module => {
-    resolve(module)
-  })
-})
+const Home = ()=> import('@/components/Home')
 
-const TimeLine = (resolve => {
-  import('@/components/TimeLine').then(module => {
-    resolve(module)
-  })
-})
+const TimeLine = ()=> import('@/components/TimeLine')
 
-const AboutMe = (resolve => {
-  import('@/components/AboutMe').then(module => {
-    resolve(module)
-  })
-})
+const AboutMe = ()=> import('@/components/AboutMe')
 
-const PersonalNotes = (resolve => {
-  import('@/components/persionalNotes/PersonalNotes').then(module => {
-    resolve(module)
-  })
-})
+const PersonalNotes = ()=> import('@/components/persionalNotes/PersonalNotes')
+const NoteDetails = ()=> import('@/components/persionalNotes/NoteDetails')
 
-const NoteDetails = (resolve => {
-  import('@/components/persionalNotes/NoteDetails').then(module => {
-    resolve(module)
-  })
-})
+const Talkanymore = ()=> import('@/components/Talkanymore')
 
-const Talkanymore = (resolve => {
-  import('@/components/Talkanymore').then(module => {
-    resolve(module)
-  })
-})
-
-const WebsiteLinks = (resolve) => {
-  import('@/components/WebSiteLinks').then(module => {
-    resolve(module)
-  })
-}
+const WebsiteLinks = ()=> import('@/components/WebSiteLinks')
 
 export default new Router({
   mode:'history',

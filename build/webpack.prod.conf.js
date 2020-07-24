@@ -28,39 +28,33 @@ const webpackConfig = merge(baseWebpackConfig, {
   output: {
     path: config.build.assetsRoot,
     filename: utils.assetsPath('js/[name].[chunkhash].js'),
-    chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
+    chunkFilename: utils.assetsPath('js/[name].[chunkhash].js')
   },
   // 新的打包规则
   //优化拆分了element和mavon打包之后的包。
   optimization: {
     splitChunks: {
-      chunks:'all',
+      chunks:'all',//chunks: 表示显示块的范围，有三个可选值：initial(初始块)、async(按需加载块)、all(全部块)，默认为all;
       cacheGroups: {
-        vue: {
-          name: 'vue',
-          test: /[\\/]node_modules[\\/]vue[\\/]/,
-          priority: -10
-        },
-        'vue-router': {
-          name: 'vue-router',
-          test: /[\\/]node_modules[\\/]vue-router[\\/]/,
-          priority: -10
-        },
         'element-ui': {
+          chunks:'async',
           name: 'element-ui',
           test: /[\\/]node_modules[\\/]element-ui[\\/]/,
           priority: -10
         },
         'mavon-editor':{
+          chunks:'async',
           name: 'mavon-editor',
           test: /[\\/]node_modules[\\/]mavon-editor[\\/]/,
           priority: -10
         },
         vendors: {
+          chunks:'all',
           name:'vendors',
-          test: /[\\/]node_modules[\\/]/,
+          test: /(vue|vue-touter|axios)/,
+          minChunks:2,
           // 优先级
-          priority: -20
+          priority: -30
         },
       }
       
