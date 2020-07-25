@@ -3,12 +3,13 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import ElementUI from 'element-ui'
+import {Button,Main,Menu,Icon,Dialog,Step,Steps,Input,Pagination,MenuItem} from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import VueParticles from 'vue-particles'
 
 Vue.config.productionTip = false;
-Vue.use(ElementUI, { size: 'small' });
+Vue.use(Button);Vue.use(Main);Vue.use(Menu);Vue.use(Icon);Vue.use(Dialog);
+Vue.use(Step);Vue.use(Steps);Vue.use(Input);Vue.use(Pagination);Vue.use(MenuItem)
 Vue.use(VueParticles)
 
 /* eslint-disable no-new */

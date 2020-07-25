@@ -11,8 +11,10 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 // const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
+const TerserWebpackPlugin = require('terser-webpack-plugin')
 
 const env = require('../config/prod.env')
+const { entry } = require('./webpack.base.conf')
 
 const webpackConfig = merge(baseWebpackConfig, {
   module: {
@@ -26,25 +28,67 @@ const webpackConfig = merge(baseWebpackConfig, {
   output: {
     path: config.build.assetsRoot,
     filename: utils.assetsPath('js/[name].[chunkhash].js'),
-    chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
+    chunkFilename: utils.assetsPath('js/[name].[chunkhash].js')
   },
   // 新的打包规则
+  //优化拆分了element和mavon打包之后的包。
   optimization: {
     splitChunks: {
+      chunks:'all',//chunks: 表示显示块的范围，有三个可选值：initial(初始块)、async(按需加载块)、all(全部块)，默认为all;
       cacheGroups: {
-        styles: {
-          name: 'styles',
-          test: /\.css$/,
-          chunks: 'all',
-          enforce: true
+        'element-ui': {
+          chunks:'async',
+          name: 'element-ui',
+          test: /[\\/]node_modules[\\/]element-ui[\\/]/,
+          priority: -10
         },
-        vendor:{
-          test: /node_modules/,
-          name: 'vendor',
-          chunks:'all'
+        'mavon-editor':{
+          chunks:'async',
+          name: 'mavon-editor',
+          test: /[\\/]node_modules[\\/]mavon-editor[\\/]/,
+          priority: -10
+        },
+        vendors: {
+          chunks:'all',
+          name:'vendors',
+          test: /(vue|vue-touter|axios)/,
+          minChunks:2,
+          // 优先级
+          priority: -30
+        },
       }
-    }
-    }
+      
+      //默认值不写
+      // cacheGroups: {
+      //   styles: {
+      //     name: 'styles',
+      //     test: /\.css$/,
+      //     chunks: 'all',
+      //     enforce: true
+      //   },
+      //   vendor:{
+      //     test: /node_modules/,
+      //     name: 'vendor',
+      //     chunks:'all'
+      //   }
+      // }
+    },
+    // 将当前模块的记录其他模块的hash单独打包为一个文件 runtime
+    // 解决：修改a文件导致b文件的contenthash变化
+    runtimeChunk: {
+      name: entrypoint => `runtime-${entrypoint.name}`
+    },
+    minimizer: [
+      //配置生产环境的压缩方案：js和css
+      new TerserWebpackPlugin({
+        //开启缓存
+        cache: true,
+        //开启多进程打包
+        parallel: true,
+        //启动sourcemap
+        sourceMap: true
+      })
+    ]
   },
   plugins: [
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
@@ -117,15 +161,16 @@ if (config.build.productionGzip) {
 
   webpackConfig.plugins.push(
     new CompressionWebpackPlugin({
-      asset: '[path].gz[query]',
+      filename: '[path].gz[query]',
       algorithm: 'gzip',
       test: new RegExp(
         '\\.(' +
         config.build.productionGzipExtensions.join('|') +
         ')$'
       ),
-      threshold: 10240,
-      minRatio: 0.8
+      threshold: 10240,//处理大于当前字节的文件
+      minRatio: 0.8,//只有压缩得更好的资产才能处理这个比率。默认为0.8。
+      // deleteOriginalAssets:true,//是否删除原始资产？默认为false。
     })
   )
 }
