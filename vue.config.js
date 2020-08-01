@@ -3,6 +3,7 @@ const path =  require('path');
 //打包分析插件
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin
 const IS_PROD = ['production', 'prod'].includes(process.env.NODE_ENV);
+//添加别名
 const resolve = (dir) => path.join(__dirname, dir);
 module.exports = {
     publicPath: process.env.NODE_ENV === 'production' ? '/api' : '/',  // 公共路径
@@ -14,6 +15,59 @@ module.exports = {
     productionSourceMap: !IS_PROD, // 生产环境的 source map
     parallel: require("os").cpus().length > 1, // 是否为 Babel 或 TypeScript 使用 thread-loader。该选项在系统的 CPU 有多于一个内核时自动启用，仅作用于生产构建。
     pwa: {}, // 向 PWA 插件传递选项。
+    configureWebpack: config => {
+        //splitchunks
+        if(IS_PROD) {
+            config.optimization = {
+                splitChunks: {
+                    cacheGroups: {
+                        common: {
+                            name: "chunk-common",
+                            chunks: "initial",
+                            minChunks: 2,
+                            maxInitialRequests: 5,
+                            minSize: 0,
+                            priority: 1,
+                            reuseExistingChunk: true,
+                            enforce: true
+                        },
+                        vendors: {
+                            name: "chunk-vendors",
+                            test: /[\\/]node_modules[\\/]/,
+                            chunks: "initial",
+                            priority: 2,
+                            reuseExistingChunk: true,
+                            enforce: true
+                        },
+                        elementUI: {
+                            name: "chunk-elementui",
+                            test: /[\\/]node_modules[\\/]element-ui[\\/]/,
+                            chunks: "all",
+                            priority: 3,
+                            reuseExistingChunk: true,
+                            enforce: true
+                        },
+                        'mavon-editor': {
+                            name: "chunk-mavon",
+                            test:  /[\\/]node_modules[\\/]mavon-editor[\\/]/,
+                            chunks: "async",
+                            priority: 20,
+                            reuseExistingChunk: true,
+                            enforce: true
+                        },
+                        'core-js': {
+                            name: "chunk-corejs",
+                            test: /[\\/]core-js[\\/]/,
+                            chunks: "all",
+                            priority: 20,
+                            reuseExistingChunk: true,
+                            enforce: true
+                        }
+                    }
+                }
+            }
+        }
+    },
     chainWebpack: config => {
         config.resolve.symlinks(true); // 修复热更新失效
         // 如果使用多页面打包，使用vue inspect --plugins查看html是否在结果数组中
@@ -36,7 +90,13 @@ module.exports = {
                     analyzerMode: "static"
                 }
             ])
+        };
+
+        // spiltChunks
+        if(IS_PROD) {
+            config.optimization.delete("splitChunks");
         }
+        return config;
     },
     css: {
         extract: IS_PROD,
