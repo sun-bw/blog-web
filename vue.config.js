@@ -3,6 +3,9 @@ const path =  require('path');
 //打包分析插件
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin
 const IS_PROD = ['production', 'prod'].includes(process.env.NODE_ENV);
+//gzip压缩
+const CompressionWebpackPlugin = require("compression-webpack-plugin")
+const productionGzipExtensions = /\.(js|css|json|txt|html|ico|svg)(\?.*)?$/i
 //添加别名
 const resolve = (dir) => path.join(__dirname, dir);
 module.exports = {
@@ -16,8 +19,9 @@ module.exports = {
     parallel: require("os").cpus().length > 1, // 是否为 Babel 或 TypeScript 使用 thread-loader。该选项在系统的 CPU 有多于一个内核时自动启用，仅作用于生产构建。
     pwa: {}, // 向 PWA 插件传递选项。
     configureWebpack: config => {
-        //splitchunks
+        const plugins = [];
         if(IS_PROD) {
+            //splitchunks
             config.optimization = {
                 splitChunks: {
                     cacheGroups: {
@@ -65,7 +69,17 @@ module.exports = {
                         }
                     }
                 }
-            }
+            };
+            //gzip压缩
+            plugins.push(
+                new CompressionWebpackPlugin({
+                    filename: "[path].gz[query]",
+                    algorithm: "gzip",
+                    test: productionGzipExtensions,
+                    threshold: 10240,
+                    minRatio: 0.8
+                })
+            )
         }
     },
     chainWebpack: config => {
