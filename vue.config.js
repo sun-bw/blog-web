@@ -1,5 +1,7 @@
 // vue.config.js
 const path =  require('path');
+//打包分析插件
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin
 const IS_PROD = ['production', 'prod'].includes(process.env.NODE_ENV);
 const resolve = (dir) => path.join(__dirname, dir);
 module.exports = {
@@ -7,7 +9,7 @@ module.exports = {
     indexPath: 'index.html' , // 相对于打包路径index.html的路径
     outputDir: process.env.outputDir || 'dist', // 'dist', 生产环境构建文件的目录
     assetsDir: 'static', // 相对于outputDir的静态资源(js、css、img、fonts)目录
-    lintOnSave: false, // 是否在开发环境下通过 eslint-loader 在每次保存时 lint 代码
+    lintOnSave: true, // 是否在开发环境下通过 eslint-loader 在每次保存时 lint 代码
     runtimeCompiler: true, // 是否使用包含运行时编译器的 Vue 构建版本
     productionSourceMap: !IS_PROD, // 生产环境的 source map
     parallel: require("os").cpus().length > 1, // 是否为 Babel 或 TypeScript 使用 thread-loader。该选项在系统的 CPU 有多于一个内核时自动启用，仅作用于生产构建。
@@ -26,6 +28,15 @@ module.exports = {
             .set('@components', resolve('src/components'))
             .set('@views', resolve('src/views'))
             .set('@store', resolve('src/store'));
+
+        // 生成打包分析报告
+        if(IS_PROD){
+            config.plugin("webpack-report").use(BundleAnalyzerPlugin, [
+                {
+                    analyzerMode: "static"
+                }
+            ])
+        }
     },
     css: {
         extract: IS_PROD,
