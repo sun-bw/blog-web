@@ -2,7 +2,7 @@
     <div class="footer">
         <div class="footer-image">
             <a href="https://github.com/sun-bw" class="footer-a">
-                <img src='../static/img/github.jpg'>
+                <img src='/static/img/github.jpg'>
             </a>
         </div>
         <div class="footer-content">Copyright © 2019-2020 墨染。 辽ICP备20001331号</div>

@@ -142,7 +142,7 @@
   width: @w;
 }
   .section1{
-    background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../../static/img/homeImg.jpg);
+    background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(/static/img/homeImg.jpg);
     height: 100vh;
     background-size: 100% 100%;
     background-attachment:fixed;
@@ -170,7 +170,7 @@
   }
   @media screen and (max-width:800px){
     .section1{
-      background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../../static/img/computer2.jpg);
+      background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(/static/img/computer2.jpg);
     }
     .downcontent{
       display: none;
@@ -260,7 +260,7 @@
   }
 
   .section3{
-    background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../../static/img/home-image.jpg);
+    background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(/static/img/home-image.jpg);
     background-position: center;
     /* 图片浮动 */
     background-attachment: fixed;

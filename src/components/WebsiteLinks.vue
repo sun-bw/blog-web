@@ -59,7 +59,7 @@ export default {
         }
     },
     components:{
-        Infoleft
+        Infoleft,
     },
     mounted(){
         this.findWebsiteLink();

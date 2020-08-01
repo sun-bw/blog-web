@@ -5,7 +5,7 @@
     <div class="content">
       <!-- 个人信息 -->
       <div class="personInfo">
-        <img src="../../static/img/personInfo.png">
+        <img src="/static/img/personInfo.png">
         个人信息
       </div>
       <div class="aoboutMe">
@@ -20,7 +20,7 @@
       </div>
       <!-- 个人技能 -->
       <div class="personInfo">
-        <img src="../../static/img/personSkill.png">
+        <img src="/static/img/personSkill.png">
         个人技能
       </div>
       <div class="aoboutMe">
@@ -45,7 +45,7 @@
         </div>
       </div>
       <div class="personInfo">
-        <img src="../../static/img/telphone.png">
+        <img src="/static/img/telphone.png">
         联系方式
       </div>
       <div class="aoboutMe">
@@ -103,7 +103,7 @@ export default {
 }
 @font-face {
   font-family: myFont;
-  src: url('../../static/font/font.ttf');
+  src: url('/static/font/font.ttf');
 }
 /*媒体查询*/
 @media screen and (max-width: 13660px){
