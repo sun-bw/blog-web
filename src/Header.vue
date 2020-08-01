@@ -211,6 +211,7 @@ export default {
 }
 .maskrub{
     width: 100%;
+    
     height: 100vh;
     position: fixed;
     top: 0;
