@@ -14,7 +14,7 @@ const NoteDetails = ()=> import('@/components/persionalNotes/NoteDetails')
 
 const Talkanymore = ()=> import('@/components/Talkanymore')
 
-const WebsiteLinks = ()=> import('@/components/WebSiteLinks')
+const WebsiteLinks = ()=> import('@/components/WebsiteLinks')
 
 export default new Router({
   mode:'history',

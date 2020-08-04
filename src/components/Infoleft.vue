@@ -3,7 +3,7 @@
         <div class="avatarInfo">
             <div class="avatar-content">
                 <div class="about-avatar">
-                    <img src="../../static/img/avatar.jpg" class="avatar">
+                    <img src="/static/img/avatar.jpg" class="avatar">
                 </div>
                 <div class="aboutMe">
                     <p class="name">墨染</p>

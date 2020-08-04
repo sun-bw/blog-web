@@ -109,7 +109,7 @@ export default {
   /*去掉body的magin*/
   body{
     margin: 0px;
-    cursor: url('../static/img/7de5437.png'), auto;
+    cursor: url('/static/img/7de5437.png'), auto;
   }
   .el-main{
     padding: 0px !important;
