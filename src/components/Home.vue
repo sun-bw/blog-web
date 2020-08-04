@@ -8,8 +8,8 @@
         clickMode="push" class="particles">
       </vue-particles>
       <div class="content">
-        <p>一个初入江湖de</p>
-        <p>伪文艺de程序员</p>
+        <p>一个初入江湖</p>
+        <p>伪文艺程序员</p>
       </div>
       <div class="downcontent" @click="scrollToDown">
         <i class="el-icon-arrow-down downPic"></i>
