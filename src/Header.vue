@@ -2,7 +2,7 @@
     <div>
         <!--页面头部-->
         <div class="header-content" id="header-content">
-            <div class="blog-name">墨染</div>
+            <div class="blog-name">温言</div>
             <!--transparent-->
             <el-menu :router="true" :default-active="activeIndex" mode="horizontal" :background-color="menuBackgroundColor"
                     text-color="#fff" active-text-color="#ffd04b" id="menu-content">
