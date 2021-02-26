@@ -138,7 +138,7 @@ module.exports = {
             // proxy: 'http://localhost:8080'   // 配置跨域处理,只有一个代理
             proxy: { //配置多个跨域
                 '/api':{
-                    target:'http://212.64.28.154:8080/demo',//目标url地址,云上后台地址
+                    target:'http://47.103.8.135:8080/demo',//目标url地址,云上后台地址
                     // target:'http://localhost:8080/demo',//目标url地址,
                     changeOrigin:true,//是否可以跨域
                     //ws: true,//websocket支持
